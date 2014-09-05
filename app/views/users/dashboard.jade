@@ -1,8 +1,94 @@
 extends ../shared/template
 block content
   h2 Dashboard
-  .panel.panel-default
-    h2= user.name
+  .panel.panel-primary
+    .panel-heading
+      h3.panel-title #{user.name}'s Profile
+    .panel-body
+      .col-lg-2.col-xs-12
+        img.img-responsive.img-thumbnail(src=user.primaryPhoto, style="max-width:200px")
+        p= user.tagline
+      .col-lg-6.col-xs-12
+          h2= user.name
+          p= user.email
+          p= user.about
+          p Age: &nbsp; #{user.age}
+          p Category: &nbsp; #{user.category}
+          p Looking for: &nbsp; #{user.seeking}
+          p Phone: &nbsp; #{user.phone}
+      .col-lg-2.col-xs-12
+        a.btn.btn-primary(href='/profile/#{user.email}') View my Profile
+        br
+        br
+        a.btn.btn-primary(href='/edit') Edit my Profile
+        br
+        br
+        a.btn.btn-primary(href='/photos') Manage my Photos
+
+  .panel.panel-primary
+    .panel-heading
+      h3.panel-title Messages
+    .panel-body
+      if messages.length === 0
+        h4 You have no messages.
+      else
+        table.table.table-hover.table-bordered
+          thead
+            tr
+              th From
+              th Date
+              th Message
+          tbody
+            each msg in messages
+              tr
+                td: a.btn.btn-warning.btn-xs(href='/profile/#{msg.sender.email}')= msg.sender.email
+                td= msg.date.toDateString()
+                td: a.btn.btn-primary.btn-xs(href='/messages/#{msg._id}')= msg.message.slice(0, 10) + '...'
+  .panel.panel-primary
+    .panel-heading
+      h3.panel-title Proposals
+    .panel-body
+      if proposals.length === 0
+        h4 You have no proposals.
+      else
+        table.table.table-hover.table-bordered
+          thead
+            tr
+              th From
+              th Date Sent
+              th Date Proposed
+              th Message
+          tbody
+            each prop in proposals
+              tr
+                td: a.btn.btn-warning.btn-xs(href='/profile/#{prop.sender.email}')= prop.sender.email
+                td= prop.date.toDateString()
+                td= prop.dateProposed.toDateString()
+                td: a.btn.btn-primary.btn-xs(href='/proposals/#{prop._id}')= prop.message.slice(0, 10) + '...'
+
+  .panel.panel-primary
+      .panel-heading
+        h3.panel-title Gifts
+      .panel-body
+      if gifts.length === 0
+        h4 You have no gifts.
+      else
+        each gift in gifts
+          .gift 
+            h4= gift.item.name
+            img(src=gift.item.photo)
+            p From: &nbsp; #{gift.sender.name}
+            p= gift.date.toDateString()
+  .panel.panel-primary
+    .panel-heading
+      h3.panel-title Winks
+    .panel-body
+      if winks.length === 0
+        h4 You have no winks.
+      else
+        each wink in winks
+          .wink
+            h4 From: &nbsp; #{wink.sender.name}
+              p= wink.date.toDateString()
 
 block scripts
-  script(src='/js/user/editProfile.js')

@@ -66,16 +66,16 @@ User.prototype.dashboard = function(cb){
       self      = this;
   //messages
   require('./message').messages(self._id, function(err, messages){
-    dashboard.messages = messages;
+    dashboard.messages = messages || [];
     //proposals
     require('./proposal').proposals(self._id, function(err, proposals){
-      dashboard.proposals = proposals;
+      dashboard.proposals = proposals || [];
       //gifts
       require('./gift').gifts(self._id, function(err, gifts){
-        dashboard.gifts = gifts;
+        dashboard.gifts = gifts || [];
         //winks
         require('./wink').winks(self._id, function(err, winks){
-          dashboard.winks = winks;
+          dashboard.winks = winks || [];
           cb(err, dashboard);
         });
       });

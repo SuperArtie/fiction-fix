@@ -38,7 +38,7 @@ exports.create = function(req, res){
 
 exports.dashboard = function(req, res){
   res.locals.user.dashboard(function(err, dashboard){
-    res.render('users/dashboard', {messages:dashboard.messages, winks:dashboard.winks, gift:dashboard.gifts, proposals:dashboard.proposals});
+    res.render('users/dashboard', {messages:dashboard.messages, winks:dashboard.winks, gifts:dashboard.gifts, proposals:dashboard.proposals});
   });
 };
 
