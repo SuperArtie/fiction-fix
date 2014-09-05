@@ -7,23 +7,24 @@ block content
         input(type='hidden', name='_method', value='put')
         .form-group
           label(for='email') Email
-          input.form-control#email(type='email', name='email', autofocus=true)
+          input.form-control#email(type='email', name='email', autofocus=true, value=user.email)
         .form-group
           label(for='name') Name
-          input.form-control#name(type='text', name='name')
+          input.form-control#name(type='text', name='name', value=user.name)
          .form-group
            label(for='age') Age
-           input.form-control#age(type='number', name='age')
+           input.form-control#age(type='number', name='age', value=user.age)
          .form-group
            label(for='tagline') Tagline
-           input.form-control#tagline(type='text', name='tagline')
+           input.form-control#tagline(type='text', name='tagline', value=user.tagline)
         .form-group
             label(for='locName') Location:
-            input.form-control#locName(type='text', name='loc')
-            input.form-control#locLat(type='hidden', name='loc')
-            input.form-control#locLng(type='hidden', name='loc')
+            input.form-control#locName(type='text', name='loc', value=user.loc.name)
+            input.form-control#locLat(type='hidden', name='loc', value=user.loc.lat)
+            input.form-control#locLng(type='hidden', name='loc', value=user.loc.lng)
         .form-group
-          label(for='category') I'm from a: &nbsp;
+          p Your current category is #{user.category}
+          label(for='category') Choose your category: &nbsp;
           select#category(name='category')
             option(value='Movie') Movie
             option(value='Book') Book
@@ -32,8 +33,9 @@ block content
             option(value='Comic') Comic
             option(value='Game') Game
         .form-group
-          label(for='seeking') I'm seeking: &nbsp;
-          select#seeking.dropdown(name='seeking')
+          p You are currently seeking #{user.seeking}
+          label(for='seeking') Who are you seeking: &nbsp;
+          select#seeking.dropdown(name='seeking', selected=user.seeking)
             option(value='Friends') Friends
             option(value='Sidekicks') Sidekicks
             option(value='Rivals') Rivals
@@ -41,13 +43,7 @@ block content
             option(value='Lovers') Lovers
          .form-group
            label(for='about') About Me
-           textarea.form-control#about(name='about')
-
-
-
-
-
-     
+           textarea.form-control#about(name='about', value= user.about)
         button.btn.btn-primary(type='submit') Submit
     .col-xs-6
 

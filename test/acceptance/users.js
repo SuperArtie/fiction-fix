@@ -64,5 +64,17 @@ describe('users', function(){
       });
     });
   });
+  describe('get /dashboard', function(){
+    it('should display the dashboard', function(done){
+      request(app)
+      .get('/dashboard')
+      .set('cookie', cookie)
+      .end(function(err, res){
+        expect(res.status).to.equal(200);
+        expect(res.text).to.include('Dashboard');
+        done();
+      });
+    });
+  });
 });
 

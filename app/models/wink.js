@@ -1,6 +1,7 @@
 'use strict';
 
-var Mongo = require('mongodb');
+var Mongo = require('mongodb'),
+    async = require('async');
 
 function Wink(o){
   this.senderId   = o.senderId;
@@ -25,4 +26,18 @@ Wink.all = function(cb){
   Wink.collection.find().toArray(cb);
 };
 
+Wink.winks = function(receiverId, cb){
+  var _id = Mongo.ObjectID(receiverId);
+  Wink.collection.find({receiverId:_id}).toArray(function(err, winks){
+    async.map(winks, iterator, cb);
+  });
+};
+
 module.exports = Wink;
+
+function iterator(wink, cb){
+  require('./user').findById(wink.senderId, function(err, sender){
+    wink.sender = sender;
+    cb(null, wink);
+  });
+}

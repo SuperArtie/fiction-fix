@@ -26,6 +26,7 @@ User.register = function(o, cb){
     if(user){return cb();}
     o.password = bcrypt.hashSync(o.password, 10);
     //pass to constructor
+    o.loc = {};
     User.collection.save(o, cb);
   });
 };
@@ -54,6 +55,30 @@ User.prototype.save = function(o, cb){
   });
   User.collection.save(this, cb);
 };
+
+User.prototype.dashboard = function(cb){
+  //winks
+  var dashboard = {},
+      self      = this;
+  //messages
+  require('./message').messages(self._id, function(err, messages){
+    dashboard.messages = messages;
+    //proposals
+    require('./proposal').proposals(self._id, function(err, proposals){
+      dashboard.proposals = proposals;
+      //gifts
+      require('./gift').gifts(self._id, function(err, gifts){
+        dashboard.gifts = gifts;
+        //winks
+        require('./wink').winks(self._id, function(err, winks){
+          dashboard.winks = winks;
+          cb(err, dashboard);
+        });
+      });
+    });
+  });
+};
+
 
 module.exports = User;
 
