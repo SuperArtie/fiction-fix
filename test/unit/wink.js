@@ -21,7 +21,6 @@ describe('Wink', function(){
       done();
     });
   });
-
   describe('.winks', function(){
     it('should return winks and attach sender info', function(done){
       Wink.winks('000000000000000000000002', function(err, winks){
