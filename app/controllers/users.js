@@ -36,6 +36,12 @@ exports.create = function(req, res){
   });
 };
 
+exports.dashboard = function(req, res){
+  res.locals.user.dashboard(function(err, dashboard){
+    res.render('users/dashboard', {messages:dashboard.messages, winks:});
+  });
+};
+
 exports.authenticate = function(req, res){
   User.authenticate(req.body, function(user){
     if(user){

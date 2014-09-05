@@ -1,6 +1,7 @@
 'use strict';
 
-var Mongo = require('mongodb');
+var Mongo = require('mongodb'),
+    async = require('async');
 
 function Gift(o){
   this.itemId     = o.itemId;
@@ -27,5 +28,22 @@ Gift.all = function(cb){
   Gift.collection.find().toArray(cb);
 };
 
+Gift.gifts = function(receiverId, cb){
+  var _id = Mongo.ObjectID(receiverId);
+  Gift.collection.find({receiverId:_id}).toArray(function(err, gifts){
+    async.map(gifts, iterator, cb);
+  });
+};
+
+
 module.exports = Gift;
 
+function iterator(gift, cb){
+  require('./user').findById(gift.senderId, function(err, sender){
+    gift.sender = sender;
+    require('./item').collection.findOne({_id:gift.itemId}, function(err, item){
+      gift.item = item;
+      cb(null, gift);
+    });
+  });
+}

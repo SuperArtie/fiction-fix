@@ -53,5 +53,47 @@ describe('User', function(){
       });
     });
   });
+  describe('#dashboard', function(){
+    it('should find all messages', function(done){
+      var id = '000000000000000000000001';
+      User.findById(id, function(err, user){
+        user.dashboard(function(err, dashboard){
+          expect(dashboard.messages).to.have.length(2);
+          done();
+        });
+      });
+    });
+    it('should find all proposals', function(done){
+      var id = '000000000000000000000001';
+      User.findById(id, function(err, user){
+        user.dashboard(function(err, dashboard){
+          expect(dashboard.proposals).to.have.length(1);
+          expect(dashboard.proposals[0].sender.name).to.equal('sue');
+          done();
+        });
+      });
+    });
+    it('should find all gifts', function(done){
+      var id = '000000000000000000000001';
+      User.findById(id, function(err, user){
+        user.dashboard(function(err, dashboard){
+          expect(dashboard.gifts).to.have.length(1);
+          expect(dashboard.gifts[0].sender.name).to.equal('sue');
+          expect(dashboard.gifts[0].item.name).to.equal('kryptonite');
+          done();
+        });
+      });
+    });
+    it('should find all winks', function(done){
+      var id = '000000000000000000000002';
+      User.findById(id, function(err, user){
+        user.dashboard(function(err, dashboard){
+          expect(dashboard.winks).to.have.length(3);
+          expect(dashboard.winks[0].sender.name).to.equal('bobby');
+          done();
+        });
+      });
+    });
+  });
 });
 
