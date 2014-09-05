@@ -32,7 +32,7 @@ module.exports = function(app, express){
   app.delete('/logout', users.logout);
   app.get('/edit', users.edit);
   app.put('/user', users.update);
-
+  app.get('/browse', users.browse);
   console.log('Express: Routes Loaded');
 };
 

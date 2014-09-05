@@ -12,6 +12,10 @@ Object.defineProperty(User, 'collection', {
   get: function(){return global.mongodb.collection('users');}
 });
 
+User.all = function(cb){
+  User.collection.find().toArray(cb);
+};
+
 User.findById = function(id, cb){
   var _id = Mongo.ObjectID(id); //turns id string into mongo id
   User.collection.findOne({_id:_id}, function(err, obj){  //mongo method findOne

@@ -1,0 +1,21 @@
+extends ../shared/template
+block content
+  h2 browse
+  #map
+  .row
+    .col-xs-9
+      table.table.table-striped.table-hover
+        thead
+          th Name
+          th Location
+          th Age
+          th looking for
+        tbody
+          each user in users
+            tr(data-name=user.loc.name, data-lat=user.loc.lat, data-lng=user.loc.lng)
+             td= user.name
+             td= user.loc.name
+             td= user.age
+             td= user.seeking
+block scripts
+  script(src='/js/user/browse.js')
