@@ -76,5 +76,44 @@ describe('users', function(){
       });
     });
   });
+
+  describe('get /profile/email', function(){
+    it('should display a user profile', function(done){
+      request(app)
+      .get('/profile/sue@aol.com')
+      .set('cookie', cookie)
+      .end(function(err, res){
+        expect(res.status).to.equal(200);
+        expect(res.text).to.include('sue');
+        done();
+      });
+    });
+  });
+
+  describe('get /gift/:id', function(){
+    it('should display gift page for a user', function(done){
+      request(app)
+      .get('/gift/000000000000000000000002')
+      .set('cookie', cookie)
+      .end(function(err, res){
+        expect(res.status).to.equal(200);
+        expect(res.text).to.include('kryptonite');
+        done();
+      });
+    });
+  });
+
+  describe('get /purchase/:receiverId/:itemId', function(){
+    it('', function(done){
+      request(app)
+      .post('/purchase/000000000000000000000002/a00000000000000000000001')
+      .set('cookie', cookie)
+      .end(function(err, res){
+        expect(res.status).to.equal(302);
+        expect(res.headers.location).to.equal('/profile/sue@aol.com');
+        done();
+      });
+    });
+  });
 });
 

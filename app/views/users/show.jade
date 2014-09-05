@@ -1,0 +1,9 @@
+extends ../shared/template
+block content
+  h2 Dashboard
+  .panel.panel-default
+    h2= user.name
+    #buyGift: a(href='/gift/#{user._id}') Send #{user.name} a Gift!
+
+block scripts
+  script(src='/js/user/editProfile.js')

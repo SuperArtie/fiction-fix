@@ -9,6 +9,7 @@ var morgan         = require('morgan'),
     security       = require('../lib/security'),
     debug          = require('../lib/debug'),
     home           = require('../controllers/home'),
+    gifts           = require('../controllers/gifts'),
     users          = require('../controllers/users');
 
 module.exports = function(app, express){
@@ -34,6 +35,9 @@ module.exports = function(app, express){
   app.put('/user', users.update);
   app.get('/browse', users.browse);
   app.get('/dashboard', users.dashboard);
+  app.get('/profile/:email', users.show);
+  app.get('/gift/:id', gifts.index);
+  app.post('/purchase/:receiverId/:itemId', gifts.purchase);
 
   console.log('Express: Routes Loaded');
 };

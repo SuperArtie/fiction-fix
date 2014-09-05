@@ -1,0 +1,22 @@
+extends ../shared/template
+block content
+  h2 Gifts
+  .panel.panel-default
+    table.table
+      thead
+        th Name
+        th Photo
+        th Price
+        th Buy
+      tbody
+        each item in items
+          tr
+            td= item.name
+            td#itemPhoto(style='background-image: url("#{item.photo}");')
+            td= item.price
+              form(action='/purchase/#{item._id}', method='post')
+                script.stripe-button(src='https://checkout.stripe.com/checkout.js', data-key=key, data-image='/img/stripe.png', data-name='Amazon Global', data-amount=Math.round((item.price * 100)))
+
+
+block scripts
+  script(src='/js/user/editProfile.js')

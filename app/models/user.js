@@ -83,6 +83,10 @@ User.prototype.dashboard = function(cb){
   });
 };
 
+User.findOne = function(filter, cb) {
+  User.collection.findOne(filter, cb);
+};
+
 
 module.exports = User;
 
