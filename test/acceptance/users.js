@@ -39,5 +39,30 @@ describe('users', function(){
       });
     });
   });
+  describe('get /edit', function(){
+    it('should show the edit user page', function(done){
+      request(app)
+      .get('/edit')
+      .set('cookie', cookie)
+      .end(function(err, res){
+        expect(res.status).to.equal(200);
+        expect(res.text).to.include('Edit Profile');
+        done();
+      });
+    });
+  });
+  describe('put /user', function(){
+    it('should redirect to the dashboard', function(done){
+      request(app)
+      .put('/user')
+      .send('email=bob%40email.com&name=bob&age=22&tagline=fas&loc=fefef&loc=&loc=&category=Movie&seeking=Friends&about=asdfasdf')
+      .set('cookie', cookie)
+      .end(function(err, res){
+        expect(res.status).to.equal(302);
+        expect(res.headers.location).to.include('/dashboard');
+        done();
+      });
+    });
+  });
 });
 

@@ -10,9 +10,19 @@ exports.login = function(req, res){
   res.render('users/login');
 };
 
+exports.edit = function(req, res){
+  res.render('users/edit');
+};
+
 exports.logout = function(req, res){
   req.session.destroy(function(){
     res.redirect('/');
+  });
+};
+
+exports.update = function(req, res){
+  res.locals.user.save(req.body, function(){
+    res.redirect('/dashboard');
   });
 };
 
