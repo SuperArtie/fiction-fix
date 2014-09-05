@@ -1,0 +1,20 @@
+{
+  "_id":{"$oid":"e00000000000000000000001"},
+  "senderId":{"$oid":"000000000000000000000002"},
+  "receiverId":{"$oid":"000000000000000000000001"},
+  "message":"Hey Bob,\nThis is a test message in the database",
+  "dateProposed": {"$date":1409541250448},
+  "date":{"$date":1409541250448},
+  "isRead": false,
+  "isAccepted":false
+}
+{
+  "_id":{"$oid":"e00000000000000000000002"},
+  "senderId":{"$oid":"000000000000000000000001"},
+  "receiverId":{"$oid":"000000000000000000000002"},
+  "message":"Hey Bob,\nThis is a test message in the database",
+  "dateProposed": {"$date":1409541250448},
+  "date":{"$date":1409541250448},
+  "isRead": false,
+  "isAccepted":false
+}

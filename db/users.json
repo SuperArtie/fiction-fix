@@ -1,11 +1,28 @@
 {
   "_id" : {"$oid":"000000000000000000000001"},
   "email" : "bob@aol.com",
-  "password" : "$2a$10$XR.IQktUUujLBxed70GQn.jWY1wZ9ThM0Tar9wTqzkI4Uk1uP2Or2"
+  "password" : "$2a$10$XR.IQktUUujLBxed70GQn.jWY1wZ9ThM0Tar9wTqzkI4Uk1uP2Or2",
+  "loc": {"name":"Nashville, TN, USA", "lat":36.166667, "lng":-86.78333299999997},
+  "category": "cartoon",
+  "about": "bob from bob's burgers",
+  "primaryPhoto": "",
+  "photos": ["/img/000000000000000000000001/bob1.jpg","/img/000000000000000000000001/bob2.jpg" ],
+  "age": "15",
+  "seeking": "Lovers",
+  "tagline": "burger up"
 }
 {
   "_id" : {"$oid":"000000000000000000000002"},
   "email" : "sue@aol.com",
-  "password" : "$2a$10$sjPx9TkrEASeXzH6uuDCDO.n1Sj/H2A/bu/9hBFfm5fm3Z4LzrEPa"
+  "password" : "$2a$10$sjPx9TkrEASeXzH6uuDCDO.n1Sj/H2A/bu/9hBFfm5fm3Z4LzrEPa",
+  "loc": {"name":"Las Vegas, NV, USA", "lat":36.1699412, "lng":-115.13982959999998},
+  "category": "comics",
+  "about": "sue storm",
+  "primaryPhoto": "",
+  "photos": ["/img/000000000000000000000002/sue1.jpg","/img/000000000000000000000002/sue2.jpg" ],
+  "age": "22",
+  "seeking": "Friends",
+  "tagline": "storming in"
 }
+
 

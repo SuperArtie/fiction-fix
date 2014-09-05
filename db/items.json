@@ -1,0 +1,24 @@
+{
+  "_id" : {"$oid":"a00000000000000000000001"},
+  "name" : "magic potion",
+  "photo" : "/img/items/magic-potion.jpg",
+  "price" : 1000.00
+}
+{
+  "_id" : {"$oid":"a00000000000000000000002"},
+  "name" : "love potion",
+  "photo" : "/img/items/love-potion.jpg",
+  "price" : 2000.00
+}
+{
+  "_id" : {"$oid":"a00000000000000000000003"},
+  "name" : "kryptonite",
+  "photo" : "/img/items/kryptonite.jpg",
+  "price" : 3000.00
+}
+{
+  "_id" : {"$oid":"a00000000000000000000004"},
+  "name" : "mallet",
+  "photo" : "/img/items/mallet.jpg",
+  "price" : 500.00
+}
