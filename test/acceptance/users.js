@@ -115,5 +115,20 @@ describe('users', function(){
       });
     });
   });
+
+  describe('post /profile/:receiverId', function(){
+    it('should send a user a message', function(done){
+      request(app)
+      .post('/messages/000000000000000000000002')
+      .set('cookie', cookie)
+      .send('mtype=text&message=hey')
+      .end(function(err, res){
+        expect(res.status).to.equal(302);
+        expect(res.headers.location).to.equal('/users/nodetester@yahoo.com');
+        done();
+      });
+    });
+  });
+
 });
 

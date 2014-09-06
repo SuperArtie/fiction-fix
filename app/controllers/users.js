@@ -67,4 +67,4 @@ exports.show = function(req,res){
   User.findOne({email:req.params.email}, function(err, user){
     res.render('users/show', {user:user});
   });
-}
+};
