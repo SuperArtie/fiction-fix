@@ -36,8 +36,12 @@ module.exports = function(app, express){
   //app.post('/login', users.authenticate);
   app.post('/login', passport.authenticate('local', {successRedirect:'/', failureRedirect:'/login', successFlash:'You are logged in!', failureFlash:'Incorrect email/password'}));
 
-   app.get('/auth/twitter', passport.authenticate('twitter'));
-   app.get('/auth/twitter/callback', passport.authenticate('twitter', {successRedirect:'/', failureRedirect:'/login', successFlash:'You are logged with Twitter!', failureFlash:'Failed to login through Twitter'}));
+  app.get('/auth/twitter', passport.authenticate('twitter'));
+  app.get('/auth/twitter/callback', passport.authenticate('twitter', {successRedirect:'/', failureRedirect:'/login', successFlash:'You are logged with Twitter!', failureFlash:'Failed to login through Twitter'}));
+
+  app.get('/auth/facebook', passport.authenticate('facebook'));
+  app.get('/auth/facebook/callback', passport.authenticate('facebook', {successRedirect:'/', failureRedirect:'/login', successFlash:'You are logged with Facebook!', failureFlash:'Failed to login through Facebook'}));
+
 
   app.use(security.bounce);
   app.delete('/logout', users.logout);
