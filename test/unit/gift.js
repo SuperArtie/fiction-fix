@@ -21,7 +21,17 @@ describe('Gift', function(){
       done();
     });
   });
-
+  describe('.create', function(){
+    it('should create a gift', function(done){
+      var a = {itemId:'a00000000000000000000001', senderId:'000000000000000000000001', receiverId:'000000000000000000000002'};
+      Gift.create(a.itemId, a.senderId, a.receiverId, function(){
+        Gift.all(function(err, gifts){
+          expect(gifts.length).to.equal(4);
+          done();
+        });
+      });
+    });
+  });
   describe('.gifts', function(){
     it('should return gifts and attach item and sender info', function(done){
       Gift.gifts('000000000000000000000001', function(err, gifts){
