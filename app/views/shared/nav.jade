@@ -19,6 +19,7 @@
                 input(type='hidden', name='_method', value='delete')
                 button.btn.btn-danger= user.email
         else
+          li: a(href='/auth/twitter'): i.fa.fa-twitter.fa-lg
           li: a(href='/register') Register
           li: a(href='/login') Login
 

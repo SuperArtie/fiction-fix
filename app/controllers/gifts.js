@@ -13,9 +13,9 @@ exports.index = function(req, res){
 exports.purchase = function(req, res){
   var stripe      = require('stripe')(config.stripe.secretKey),
     stripeToken = req.body.stripeToken;
-    console.log('~~~~~~~~~~~~'+req.session.user);
-    Item.findById(req.params.itemId, function(err, item){
-      stripe.charges.create({
+  console.log('~~~~~~~~~~~~'+req.session.user);
+  Item.findById(req.params.itemId, function(err, item){
+    stripe.charges.create({
       amount: (item.price * 100),
       currency: 'usd',
       card: stripeToken,

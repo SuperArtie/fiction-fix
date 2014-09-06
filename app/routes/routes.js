@@ -7,6 +7,9 @@ var morgan         = require('morgan'),
     session        = require('express-session'),
     RedisStore     = require('connect-redis')(session),
     security       = require('../lib/security'),
+    flash          = require('connect-flash'),
+    passport       = require('passport'),
+    passportConfig = require('../lib/passport/config'),
     debug          = require('../lib/debug'),
     home           = require('../controllers/home'),
     gifts           = require('../controllers/gifts'),
@@ -19,15 +22,22 @@ module.exports = function(app, express){
   app.use(bodyParser.urlencoded({extended:true}));
   app.use(methodOverride());
   app.use(session({store:new RedisStore(), secret:'my super secret key', resave:true, saveUninitialized:true, cookie:{maxAge:null}}));
+  app.use(flash());
+  passportConfig(passport, app);
 
-  app.use(security.authenticate);
+
+  app.use(security.locals);
   app.use(debug.info);
 
   app.get('/', home.index);
   app.get('/register', users.new);
   app.post('/register', users.create);
   app.get('/login', users.login);
-  app.post('/login', users.authenticate);
+  //app.post('/login', users.authenticate);
+  app.post('/login', passport.authenticate('local', {successRedirect:'/', failureRedirect:'/login', successFlash:'You are logged in!', failureFlash:'Incorrect email/password'}));
+
+   app.get('/auth/twitter', passport.authenticate('twitter'));
+   app.get('/auth/twitter/callback', passport.authenticate('twitter', {successRedirect:'/', failureRedirect:'/login', successFlash:'You are logged with Twitter!', failureFlash:'Failed to login through Twitter'}));
 
   app.use(security.bounce);
   app.delete('/logout', users.logout);

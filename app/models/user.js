@@ -34,13 +34,20 @@ User.register = function(o, cb){
     User.collection.save(o, cb);
   });
 };
-
-User.authenticate = function(o, cb){
-  User.collection.findOne({email:o.email}, function(err, user){
+User.localAuthenticate = function(email, password, cb){
+  User.collection.findOne({email:email}, function(err, user){
     if(!user){return cb();}
-    var isOk = bcrypt.compareSync(o.password, user.password);
+    var isOk = bcrypt.compareSync(password, user.password);
     if(!isOk){return cb();}
-    cb(user);
+    cb(null, user);
+  });
+};
+
+User.twitterAuthenticate = function(token, secret, twitter, cb){
+  User.collection.findOne({twitterId:twitter.id}, function(err, user){
+    if(user){return cb(null, user);}
+    user = {twitterId:twitter.id, username:twitter.username, displayName:twitter.displayName, type:'twitter'};
+    User.collection.save(user, cb);
   });
 };
 
