@@ -1,7 +1,5 @@
 'use strict';
 
-
-var User = require('../models/user');
 exports.locals = function(req, res, next){
 
   res.locals.user = req.user;

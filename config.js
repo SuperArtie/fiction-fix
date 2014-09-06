@@ -19,4 +19,10 @@ config.facebook = {
   callbackURL : 'http://mikey-vm.com:3333/auth/facebook/callback'
 };
 
+config.google = {
+  clientId    : '75269371673-d5pes8pmg7t39s5q4v88rjaulne52ltg.apps.googleusercontent.com',
+  clientSecret: process.env.GOOGLE_SECRET,
+  callbackURL : 'http://mikey-vm.com:3333/auth/google/callback'
+};
+
 module.exports = config;

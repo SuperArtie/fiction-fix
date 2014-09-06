@@ -59,6 +59,15 @@ User.facebookAuthenticate = function(token, secret, facebook, cb){
   });
 };
 
+User.googleAuthenticate = function(token, secret, google, cb){
+  console.log(google);
+  User.collection.findOne({googleId:google.id}, function(err, user){
+    if(user){return cb(null, user);}
+    user = {googleId:google.id, username:google.displayName, displayName:google.displayName, type:'google', loc:{}};
+    User.collection.save(user, cb);
+  });
+};
+
 User.prototype.save = function(o, cb){
   var properties = Object.keys(o),
       self       = this;
