@@ -3,10 +3,10 @@
 var Mongo = require('mongodb'),
     async = require('async');
 
-function Gift(o){
-  this.itemId     = o.itemId;
-  this.senderId   = o.senderId;
-  this.receiverId = o.receiverId;
+function Gift(itemId, senderId, receiverId){
+  this.itemId     = Mongo.ObjectID(itemId);
+  this.senderId   = Mongo.ObjectID(senderId);
+  this.receiverId = Mongo.ObjectID(receiverId);
   this.date       = new Date();
 }
 
@@ -14,9 +14,9 @@ Object.defineProperty(Gift, 'collection', {
   get: function(){return global.mongodb.collection('gifts');}
 });
 
-Gift.create = function(o, cb){
-  var a = new Gift(o);
-  Gift.collection.save(a, cb);
+Gift.create = function(itemId, senderId, receiverId, cb){
+  var gift = new Gift(itemId, senderId, receiverId);
+  Gift.collection.save(gift, cb);
 };
 
 Gift.findById = function(id, cb){

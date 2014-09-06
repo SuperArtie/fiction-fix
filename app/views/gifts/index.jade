@@ -14,7 +14,7 @@ block content
             td= item.name
             td#itemPhoto(style='background-image: url("#{item.photo}");')
             td= item.price
-              form(action='/purchase/#{item._id}', method='post')
+              form(action='/purchase/#{receiverId}/#{item._id}', method='post')
                 script.stripe-button(src='https://checkout.stripe.com/checkout.js', data-key=key, data-image='/img/stripe.png', data-name='Amazon Global', data-amount=Math.round((item.price * 100)))
 
 
