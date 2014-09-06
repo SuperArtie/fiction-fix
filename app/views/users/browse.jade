@@ -13,9 +13,9 @@ block content
         tbody
           each user in users
             tr(data-name=user.loc.name, data-lat=user.loc.lat, data-lng=user.loc.lng)
-             td: a(href='/profile/#{user.email}')= user.name
-             td= user.loc.name
-             td= user.age
-             td= user.seeking
+             td: a(href='/profile/#{user.email}')= user.name || user.username || user.displayName ||user.email
+             td= user.loc.name || 'N/A'
+             td= user.age || 'N/A'
+             td= user.seeking || 'N/A'
 block scripts
   script(src='/js/user/browse.js')

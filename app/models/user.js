@@ -46,7 +46,7 @@ User.localAuthenticate = function(email, password, cb){
 User.twitterAuthenticate = function(token, secret, twitter, cb){
   User.collection.findOne({twitterId:twitter.id}, function(err, user){
     if(user){return cb(null, user);}
-    user = {twitterId:twitter.id, username:twitter.username, displayName:twitter.displayName, type:'twitter', loc:{}};
+    user = {twitterId:twitter.id, username:twitter.username, displayName:twitter.displayName,email:displayName, type:'twitter', loc:{}};
     User.collection.save(user, cb);
   });
 };
@@ -54,7 +54,7 @@ User.twitterAuthenticate = function(token, secret, twitter, cb){
 User.facebookAuthenticate = function(token, secret, facebook, cb){
   User.collection.findOne({facebookId:facebook.id}, function(err, user){
     if(user){return cb(null, user);}
-    user = {facebookId:facebook.id, username:facebook.displayName, displayName:facebook.dispalyName, type:'facebook', loc:{}};
+    user = {facebookId:facebook.id, username:facebook.displayName, displayName:facebook.dispalyName, email:displayName, type:'facebook', loc:{}};
     User.collection.save(user, cb);
   });
 };
@@ -63,7 +63,7 @@ User.googleAuthenticate = function(token, secret, google, cb){
   console.log(google);
   User.collection.findOne({googleId:google.id}, function(err, user){
     if(user){return cb(null, user);}
-    user = {googleId:google.id, username:google.displayName, displayName:google.displayName, type:'google', loc:{}};
+    user = {googleId:google.id, username:google.displayName, displayName:google.displayName,email:displayName, type:'google', loc:{}};
     User.collection.save(user, cb);
   });
 };

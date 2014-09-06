@@ -1,10 +1,22 @@
 extends ../shared/template
 block content
   h2 Dashboard
-  .panel.panel-default
-    h2= user.name
-    #buyGift: a(href='/gift/#{user._id}') Send #{user.name} a Gift!
-  
+  .panel.panel-primary
+    .panel-heading
+      h3.panel-title #{client.name || client.username || client.displayName || client.email}'s Profile
+    .panel-body
+      .col-lg-2.col-xs-12
+        img.img-responsive.img-thumbnail(src=client.primaryPhoto, style="max-width:200px")
+        p= client.tagline
+      .col-lg-6.col-xs-12
+          h2= client.name
+          p= client.email
+          p= client.about
+          p Age: &nbsp; #{client.age}
+          p Category: &nbsp; #{client.category}
+          p Looking for: &nbsp; #{client.seeking}
+          p Phone: &nbsp; #{client.phone}
+      .col-lg-2.col-xs-12
+        a#buyGift.btn.btn-primary(href='/gift/#{client._id}') Send a Gift to #{client.name || client.username || client.displayName}
 
 block scripts
-  script(src='/js/user/editProfile.js')

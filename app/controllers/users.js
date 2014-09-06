@@ -64,7 +64,7 @@ exports.browse = function(req, res){
 };
 
 exports.show = function(req,res){
-  User.findOne({email:req.params.email}, function(err, user){
-    res.render('users/show', {user:user});
+  User.findOne({email:req.params.email}, function(err, client){
+    res.render('users/show', {client:client});
   });
 };
