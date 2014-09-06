@@ -73,6 +73,7 @@ exports.show = function(req,res){
 exports.wink = function(req, res){
   require('../models/wink').create(req.user._id, req.body.receiverId, function(){
     User.findById(req.body.receiverId, function(err, receiver){
+      req.flash('success', 'You just sent a wink to ' +  receiver.email)
       res.redirect('/profile/'+receiver.email);
     });
   });
