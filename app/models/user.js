@@ -2,6 +2,8 @@
 
 var bcrypt = require('bcrypt'),
     _      = require('underscore-contrib'),
+    fs     = require('fs'),
+    path   = require('path'),
     Mongo  = require('mongodb');
 
 function User(){
@@ -76,7 +78,7 @@ User.prototype.save = function(o, cb){
   properties.forEach(function(property){
     switch(property){
       case 'isPublic':
-        if(o.isPublic == 'false'){
+        if(o.isPublic === 'false'){
           self.isPublic = false;
         }else{
           self.isPublic = true;
@@ -119,6 +121,22 @@ User.findOne = function(filter, cb){
   User.collection.findOne(filter, cb);
 };
 
-
+User.prototype.addPhotos = function(files, cb){
+  var dir   = __dirname + '/../static/img/' + this._id,
+      exist = fs.existsSync(dir),
+      self  = this;
+  if(!exist){
+    fs.mkdirSync(dir);
+  }
+  files.photos.forEach(function(photo){
+    var ext      = path.extname(photo.path),
+        relative = '/img/' + self._id + '/' + self.photos.length + ext,
+        absolute = dir + '/' + self.photos.length + ext;
+    fs.renameSync(photo.path, absolute);
+    self.photos.push(relative);
+  });
+  //console.log(self);
+  User.collection.save(self, cb);
+};
 module.exports = User;
 

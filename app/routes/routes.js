@@ -58,6 +58,10 @@ module.exports = function(app, express){
 
   app.post('/wink', users.wink);
 
+  app.get('/photos', users.photos);
+  app.post('/photos', users.addPhotos);
+  app.post('/photos/primary', users.makePrimary);
+
   console.log('Express: Routes Loaded');
 };
 

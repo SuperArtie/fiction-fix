@@ -24,5 +24,15 @@ block content
           form(role='form', method='post', action='/wink')
             input(type='hidden', name='receiverId', value='#{client._id}')
             button.btn.btn-primary(type='submit') Send a Wink to #{client.name || client.displayName}
+  .panel.panel-primary
+    .panel-heading
+      h3.panel-title Photos
+    .panel-body
+      if client.photos.length === 0
+        h4 This user hasn't uploaded any photos.
+      else
+        each photo in client.photos
+          .photo
+            img.img.img-thumbnail.img-responsive(src=photo)
 
 block scripts

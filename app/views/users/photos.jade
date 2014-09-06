@@ -1,0 +1,25 @@
+extends ../shared/template
+block content
+  h2 Manage Your Photos
+  .panel.panel-primary
+    .panel-heading
+      h3.panel-title Add More Photos
+    .panel-body
+      .col-xs-6
+        form(role='form', method='post', action='/photos', enctype='multipart/form-data')
+          input(name='photos', type='file', multiple=true)
+          button.btn.btn-primary(type='submit') Submit
+      .col-xs-6
+  .panel.panel-primary
+    .panel-heading
+      h3.panel-title Choose Your profile picture 
+    .panel-body
+      .col-xs-12
+        form(role='form', method='post', action='/photos/primary')
+          each photo in user.photos
+            .photo
+              img.img-thumbnail.img-responsive(src=photo)
+              input(type='radio', name='primaryPhoto', value=photo)
+          button.btn.btn-primary(type='submit') Submit
+
+block scripts

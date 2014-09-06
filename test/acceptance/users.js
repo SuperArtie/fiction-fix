@@ -128,5 +128,17 @@ describe('users', function(){
       });
     });
   });
+  describe('get /photos', function(){
+    it('should show the photo manager page', function(done){
+      request(app)
+      .get('/photos')
+      .set('cookie', cookie)
+      .end(function(err, res){
+        expect(res.status).to.equal(200);
+        expect(res.text).to.include('Manage Your Photos');
+        done();
+      });
+    });
+  });
 });
 

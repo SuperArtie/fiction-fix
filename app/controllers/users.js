@@ -1,6 +1,7 @@
 'use strict';
 
-var User = require('../models/user');
+var User = require('../models/user'),
+    mp   = require('multiparty');
 
 exports.new = function(req, res){
   res.render('users/new');
@@ -76,4 +77,29 @@ exports.wink = function(req, res){
     });
   });
 };
+
+exports.photos = function(req, res){
+  res.render('users/photos');
+};
+
+exports.addPhotos = function(req, res){
+  var form = new mp.Form();
+  form.parse(req, function(err, fields, files){
+    console.log('FIELDS------', fields);
+    console.log('FILES------', files);
+    res.locals.user.addPhotos(files, function(){
+      req.flash('success', 'You uploaded some photos!');
+      res.redirect('/photos');
+    });
+  });
+};
+
+exports.makePrimary = function(req, res){
+  res.locals.user.primaryPhoto = req.body.primaryPhoto;
+  User.collection.save(res.locals.user, function(){
+    req.flash('success', 'You have updated your profile picture!');
+    res.redirect('/dashboard');
+  });
+};
+
 

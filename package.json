@@ -52,6 +52,7 @@
     "passport-google-oauth": "^0.1.5",
     "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.2",
+    "path": "^0.4.9",
     "request": "^2.42.0",
     "stripe": "^2.8.0",
     "underscore-contrib": "^0.3.0"

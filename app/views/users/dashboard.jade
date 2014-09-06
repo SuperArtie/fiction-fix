@@ -65,6 +65,16 @@ block content
                 td= prop.date.toDateString()
                 td= prop.dateProposed.toDateString()
                 td: a.btn.btn-primary.btn-xs(href='/proposals/#{prop._id}')= prop.message.slice(0, 10) + '...'
+  .panel.panel-primary
+    .panel-heading
+      h3.panel-title Photos
+    .panel-body
+      if user.photos.length === 0
+        h4 You have no photos.
+      else
+        each photo in user.photos
+          .photo
+            img.img.img-thumbnail.img-responsive(src=photo)
 
   .panel.panel-primary
       .panel-heading
