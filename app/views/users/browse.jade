@@ -13,7 +13,7 @@ block content
         tbody
           each user in users
             tr(data-name=user.loc.name, data-lat=user.loc.lat, data-lng=user.loc.lng)
-             td= user.name
+             td: a(href='/profile/#{user.email}')= user.name
              td= user.loc.name
              td= user.age
              td= user.seeking
