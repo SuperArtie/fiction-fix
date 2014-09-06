@@ -24,7 +24,7 @@ exports.purchase = function(req, res){
       req.session.save(function(){
         Gift.create(item._id, res.locals.user._id, req.params.receiverId, function(){
           User.findById(req.params.receiverId, function(err, user){
-            //req.flash('success', 'Congratulations, you just purchased some stuff!');
+            req.flash('success', 'Congratulations, you just purchased a gift!');
             res.redirect('/profile/'+ user.email);
           });
         });
