@@ -10,6 +10,7 @@
   "primaryPhoto": "http://placekitten.com/300/300",
   "photos": ["/img/000000000000000000000001/bob1.jpg","/img/000000000000000000000001/bob2.jpg" ],
   "age": "15",
+  "isPublic" : true,
   "seeking": "Lovers",
   "tagline": "burger up"
 }
@@ -25,6 +26,7 @@
   "primaryPhoto": "http://placekitten.com/300/300",
   "photos": ["/img/000000000000000000000002/sue1.jpg","/img/000000000000000000000002/sue2.jpg" ],
   "age": "22",
+  "isPublic" : true,
   "seeking": "Friends",
   "tagline": "storming in"
 }

@@ -31,6 +31,7 @@ User.register = function(o, cb){
     o.password = bcrypt.hashSync(o.password, 10);
     //pass to constructor
     o.loc = {};
+    o.isPublic = true;
     User.collection.save(o, cb);
   });
 };
@@ -46,7 +47,7 @@ User.localAuthenticate = function(email, password, cb){
 User.twitterAuthenticate = function(token, secret, twitter, cb){
   User.collection.findOne({twitterId:twitter.id}, function(err, user){
     if(user){return cb(null, user);}
-    user = {twitterId:twitter.id, username:twitter.username, displayName:twitter.displayName,email:twitter.displayName, type:'twitter', loc:{}};
+    user = {twitterId:twitter.id, username:twitter.username, displayName:twitter.displayName,email:twitter.displayName, type:'twitter', loc:{}, isPublic:true};
     User.collection.save(user, cb);
   });
 };
@@ -54,7 +55,7 @@ User.twitterAuthenticate = function(token, secret, twitter, cb){
 User.facebookAuthenticate = function(token, secret, facebook, cb){
   User.collection.findOne({facebookId:facebook.id}, function(err, user){
     if(user){return cb(null, user);}
-    user = {facebookId:facebook.id, username:facebook.displayName, displayName:facebook.displayName, email:facebook.displayName, type:'facebook', loc:{}};
+    user = {facebookId:facebook.id, username:facebook.displayName, displayName:facebook.displayName, email:facebook.displayName, type:'facebook', loc:{}, isPublic:true};
     User.collection.save(user, cb);
   });
 };
@@ -63,7 +64,7 @@ User.googleAuthenticate = function(token, secret, google, cb){
   console.log(google);
   User.collection.findOne({googleId:google.id}, function(err, user){
     if(user){return cb(null, user);}
-    user = {googleId:google.id, username:google.displayName, displayName:google.displayName,email:google.displayName, type:'google', loc:{}};
+    user = {googleId:google.id, username:google.displayName, displayName:google.displayName,email:google.displayName, type:'google', loc:{}, isPublic:true};
     User.collection.save(user, cb);
   });
 };

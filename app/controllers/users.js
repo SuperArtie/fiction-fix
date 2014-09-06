@@ -58,7 +58,7 @@ exports.authenticate = function(req, res){
 };
 
 exports.browse = function(req, res){
-  User.all(function(err, users){
+  User.collection.find({isPublic:true}).toArray(function(err, users){
     res.render('users/browse', {users:users});
   });
 };
