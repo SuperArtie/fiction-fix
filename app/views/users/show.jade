@@ -17,6 +17,12 @@ block content
           p Looking for: &nbsp; #{client.seeking}
           p Phone: &nbsp; #{client.phone}
       .col-lg-2.col-xs-12
-        a#buyGift.btn.btn-primary(href='/gift/#{client._id}') Send a Gift to #{client.name || client.username || client.displayName}
+        if client._id.toString() !== user._id.toString()
+          a#buyGift.btn.btn-primary(href='/gift/#{client._id}') Send a Gift to #{client.name || client.username || client.displayName}
+          br
+          br
+          form(role='form', method='post', action='/wink')
+            input(type='hidden', name='receiverId', value='#{client._id}')
+            button.btn.btn-primary(type='submit') Send a Wink to #{client.name || client.displayName}
 
 block scripts

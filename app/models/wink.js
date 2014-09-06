@@ -3,17 +3,18 @@
 var Mongo = require('mongodb'),
     async = require('async');
 
-function Wink(o){
-  this.senderId   = o.senderId;
-  this.receiverId = o.receiverId;
+function Wink(senderId, receiverId){
+  this.senderId   = Mongo.ObjectID(senderId);
+  this.receiverId = Mongo.ObjectID(receiverId);
+  this.date       = new Date();
 }
 
 Object.defineProperty(Wink, 'collection', {
   get: function(){return global.mongodb.collection('winks');}
 });
 
-Wink.create = function(o, cb){
-  var a = new Wink(o);
+Wink.create = function(senderId, receiverId, cb){
+  var a = new Wink(senderId, receiverId);
   Wink.collection.save(a, cb);
 };
 

@@ -56,6 +56,8 @@ module.exports = function(app, express){
   app.get('/gift/:id', gifts.index);
   app.post('/purchase/:receiverId/:itemId', gifts.purchase);
 
+  app.post('/wink', users.wink);
+
   console.log('Express: Routes Loaded');
 };
 

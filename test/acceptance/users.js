@@ -104,13 +104,26 @@ describe('users', function(){
   });
 
   describe('get /purchase/:receiverId/:itemId', function(){
-    it('', function(done){
+    it('should purchase and item', function(done){
       request(app)
       .post('/purchase/000000000000000000000002/a00000000000000000000001')
       .set('cookie', cookie)
       .end(function(err, res){
         expect(res.status).to.equal(302);
         expect(res.headers.location).to.equal('/profile/sue@aol.com');
+        done();
+      });
+    });
+  });
+  describe('post /wink', function(){
+    it('create a wink and redirect', function(done){
+      request(app)
+      .post('/wink')
+      .send('receiverId=000000000000000000000002')
+      .set('cookie', cookie)
+      .end(function(err, res){
+        expect(res.status).to.equal(302);
+        expect(res.headers.location).to.equal('/profile/000000000000000000000002');
         done();
       });
     });

@@ -68,3 +68,12 @@ exports.show = function(req,res){
     res.render('users/show', {client:client});
   });
 };
+
+exports.wink = function(req, res){
+  require('../models/wink').create(req.user._id, req.body.receiverId, function(){
+    User.findById(req.body.receiverId, function(err, receiver){
+      res.redirect('/profile/'+receiver.email);
+    });
+  });
+};
+

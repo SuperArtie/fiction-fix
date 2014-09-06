@@ -75,6 +75,13 @@ User.prototype.save = function(o, cb){
 
   properties.forEach(function(property){
     switch(property){
+      case 'isPublic':
+        if(o.isPublic == 'false'){
+          self.isPublic = false;
+        }else{
+          self.isPublic = true;
+        }
+        break;
       case 'loc':
         self.loc = {name:o.loc[0], lat:o.loc[1], lng:o.loc[2]};
         break;
