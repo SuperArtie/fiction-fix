@@ -123,7 +123,7 @@ describe('users', function(){
       .set('cookie', cookie)
       .end(function(err, res){
         expect(res.status).to.equal(302);
-        expect(res.headers.location).to.equal('/profile/000000000000000000000002');
+        expect(res.headers.location).to.equal('/profile/sue@aol.com');
         done();
       });
     });
