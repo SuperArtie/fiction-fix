@@ -22,6 +22,10 @@ User.all = function(cb){
   User.collection.find().toArray(cb);
 };
 
+User.query = function(search1, search2, cb){
+  User.collection.find({isPublic:true, category:search1, seeking:search2}).toArray(cb);
+};
+
 User.findById = function(id, cb){
   var _id = Mongo.ObjectID(id); //turns id string into mongo id
   User.collection.findOne({_id:_id}, function(err, obj){  //mongo method findOne

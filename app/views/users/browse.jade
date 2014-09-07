@@ -3,6 +3,28 @@ block content
   h2 browse
   #map
   .row
+    .col-xs-12
+      .form-group
+      form(role='form', method='post', action='/query')
+        p Show me characters from a &nbsp
+          select#category(name='search1')
+            option(value='Movie') Movie
+            option(value='Book') Book
+            option(value='Cartoon') Cartoon
+            option(value='TV') TV
+            option(value='Comic') Comic
+            option(value='Game') Game
+          span &nbsp who are looking for &nbsp
+            select#seeking.dropdown(name='search2') &nbsp
+              option(value='Friends') Friends
+              option(value='Sidekicks') Sidekicks
+              option(value='Rivals') Rivals
+              option(value='Nemesis') Nemesis
+              option(value='Lovers') Lovers
+          span &nbsp
+          button.btn.btn-success.btn-sm(type='submit') SEARCH
+          .form-group
+  .row
     .col-xs-9
       table.table.table-striped.table-hover
         thead

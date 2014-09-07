@@ -139,3 +139,9 @@ exports.proposalResponse = function(req, res){
     res.redirect('/dashboard');
   });
 };
+
+exports.query = function(req,res){
+  User.query(req.body.search1, req.body.search2, function(err, users){
+    res.render('users/browse', {users:users});
+  });
+};

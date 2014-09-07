@@ -64,6 +64,7 @@ module.exports = function(app, express){
   app.post('/proposal/:receiverId', users.propose);
   app.get('/proposals/:proposalId', users.readProposal);
   app.post('/proposal/response/:proposalId',users.proposalResponse);
+  app.post('/query',users.query);
 
   console.log('Express: Routes Loaded');
 };
