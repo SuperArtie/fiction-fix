@@ -137,7 +137,7 @@ describe('users', function(){
       .set('cookie', cookie)
       .end(function(err, res){
         expect(res.status).to.equal(302);
-        expect(res.headers.location).to.equal('/profile/sue@aol.com');
+        expect(res.headers.location).to.equal('/profile/daniel.s.roden@gmail.com');
         done();
       });
     });
