@@ -1,0 +1,27 @@
+extends ../shared/template
+block content
+  .panel.panel-primary
+    .panel-heading
+      h3.panel-title You've Received a Date Proposal from #{prop.sender.email}
+    .panel-body
+      p Date Proposed : #{prop.dateProposed.toDateString()}
+      p Message : #{prop.body}
+
+    .panel-body
+      form(role='form', method='post', action='/proposal/response/#{prop._id}')
+        .row
+          .col-xs-6
+            .radio
+              label
+                input(type='radio' name='propAccepted' value='no' checked=true)
+                span Hell no!
+            .radio
+              label
+                input(type='radio' name='propAccepted' value='yes')
+                span Yes!
+              label Explanation
+                textarea.form-control#response(name='response', placeholder='optional')
+            .form-group
+              button.btn.btn-info.btn-sm(type='submit') Respond
+
+        block scripts
