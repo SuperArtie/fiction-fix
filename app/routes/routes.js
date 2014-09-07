@@ -38,7 +38,7 @@ module.exports = function(app, express){
   app.get('/profile/:email', users.show);
   app.get('/gift/:id', gifts.index);
   app.post('/purchase/:receiverId/:itemId', gifts.purchase);
-
+  app.post('/messages/:receiverId', users.send);
   console.log('Express: Routes Loaded');
 };
 

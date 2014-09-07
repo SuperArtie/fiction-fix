@@ -2,7 +2,10 @@
 
 var bcrypt = require('bcrypt'),
     _      = require('underscore-contrib'),
-    Mongo  = require('mongodb');
+    Mongo  = require('mongodb'),
+    twilio  = require('twilio'),
+    Mailgun = require('mailgun-js'),
+    Message = require('./message');
 
 function User(){
 
@@ -87,6 +90,39 @@ User.findOne = function(filter, cb) {
   User.collection.findOne(filter, cb);
 };
 
+User.prototype.send = function (receiver, obj, cb){
+  switch(obj.mtype){
+    case 'text':
+      sendText(receiver.phone, obj.message, cb);
+      break;
+    case 'email':
+      sendEmail(this.email, receiver.email, 'Message from FictionFix', obj.message, cb);
+      break;
+    case 'internal':
+      Message.send(this._id, receiver._id, obj.message, cb);
+
+  }
+};
 
 module.exports = User;
+
+function sendText(to, body, cb){
+  if(!to){return cb();}
+
+
+  var accountSid = process.env.TWSID,
+      authToken  = process.env.TWTOK,
+      from       = process.env.FROM,
+      client     = twilio(accountSid, authToken);
+
+  client.messages.create({to:to, from:from, body:body}, cb);
+}
+
+function sendEmail(from, to, subject, message, cb){
+  var mailgun = new Mailgun({apiKey:process.env.MGKEY, domain:process.env.MGDOM}),
+      data   = {from:from, to:to, subject:subject, text:message};
+
+  mailgun.messages().send(data, cb);
+}
+
 

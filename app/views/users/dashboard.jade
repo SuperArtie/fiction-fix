@@ -43,7 +43,7 @@ block content
               tr
                 td: a.btn.btn-warning.btn-xs(href='/profile/#{msg.sender.email}')= msg.sender.email
                 td= msg.date.toDateString()
-                td: a.btn.btn-primary.btn-xs(href='/messages/#{msg._id}')= msg.message.slice(0, 10) + '...'
+                td: a.btn.btn-primary.btn-xs(href='/messages/#{msg._id}')= msg.body.slice(0, 10) + '...'
   .panel.panel-primary
     .panel-heading
       h3.panel-title Proposals

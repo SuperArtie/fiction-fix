@@ -64,7 +64,15 @@ exports.browse = function(req, res){
 };
 
 exports.show = function(req,res){
-  User.findOne({email:req.params.email}, function(err, user){
-    res.render('users/show', {user:user});
+  User.findOne({email:req.params.email}, function(err, client){
+    res.render('users/show', {client:client});
+  });
+};
+
+exports.send = function(req, res){
+  User.findById(req.params.receiverId, function(err, receiver){
+    res.locals.user.send(receiver, req.body, function(){
+      res.redirect('/profile/' + receiver.email);
+    });
   });
 };

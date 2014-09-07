@@ -1,9 +1,34 @@
 extends ../shared/template
 block content
-  h2 Dashboard
+  h2 Profile
   .panel.panel-default
     h2= user.name
-    #buyGift: a(href='/gift/#{user._id}') Send #{user.name} a Gift!
-
+    img(src=client.photo)
+    #buyGift: a(href='/gift/#{user._id}') Send #{client.name} a Gift!
+    .row
+    .col-xs-12
+      .panel.panel-default
+        .panel-body
+          form(role='form', method='post', action='/messages/#{client._id}')
+            .row
+              .col-xs-6
+                .radio
+                  label
+                    input(type='radio' name='mtype' value='text' checked=true)
+                    span Text
+                .radio
+                  label
+                    input(type='radio' name='mtype' value='email')
+                    span Email
+                .radio
+                  label
+                    input(type='radio' name='mtype' value='internal')
+                    span Internal
+              .col-xs-6
+                .form-group
+                  label(for='message') Message
+                  textarea.form-control#message(name='message', autofocus=true)
+                .form-group
+                  button.btn.btn-info.btn-sm(type='submit') Send Message
 block scripts
   script(src='/js/user/editProfile.js')

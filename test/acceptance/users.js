@@ -80,7 +80,7 @@ describe('users', function(){
   describe('get /profile/email', function(){
     it('should display a user profile', function(done){
       request(app)
-      .get('/profile/sue@aol.com')
+      .get('/profile/daniel.s.roden@gmail.com')
       .set('cookie', cookie)
       .end(function(err, res){
         expect(res.status).to.equal(200);
@@ -110,25 +110,24 @@ describe('users', function(){
       .set('cookie', cookie)
       .end(function(err, res){
         expect(res.status).to.equal(302);
-        expect(res.headers.location).to.equal('/profile/sue@aol.com');
+        expect(res.headers.location).to.equal('/profile/daniel.s.roden@gmail.com');
         done();
       });
     });
   });
 
-  describe('post /profile/:receiverId', function(){
+  describe('post /messages/:receiverId', function(){
     it('should send a user a message', function(done){
       request(app)
       .post('/messages/000000000000000000000002')
       .set('cookie', cookie)
-      .send('mtype=text&message=hey')
+      .send('mtype=text&message=Hey Sue')
       .end(function(err, res){
         expect(res.status).to.equal(302);
-        expect(res.headers.location).to.equal('/users/nodetester@yahoo.com');
+        expect(res.headers.location).to.equal('/profile/daniel.s.roden@gmail.com');
         done();
       });
     });
   });
-
 });
 
