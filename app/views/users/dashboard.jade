@@ -84,7 +84,7 @@ block content
         h4 You have no gifts.
       else
         each gift in gifts
-          .gift 
+          .gift
             h4= gift.item.name
             img(src=gift.item.photo)
             p From: &nbsp; #{gift.sender.name}
