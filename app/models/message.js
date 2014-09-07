@@ -2,11 +2,12 @@
 
 var Mongo = require('mongodb'),
     async = require('async');
-function Message(o){
-  this.senderId   = o.senderId;
-  this.body       = o.body;
-  this.receiverId = o.receiverId;
-  this.time       = new Date();
+
+function Message(senderId, receiverId, message){
+  this.senderId   = senderId;
+  this.receiverId = receiverId;
+  this.body       = message;
+  this.date       = new Date();
 }
 
 Object.defineProperty(Message, 'collection', {
@@ -32,6 +33,11 @@ Message.messages = function(receiverId, cb){
   Message.collection.find({receiverId:_id}).toArray(function(err, messages){
     async.map(messages, iterator, cb);
   });
+};
+
+Message.send = function(senderId, receiverId, message, cb){
+  var m = new Message(senderId, receiverId, message);
+  Message.collection.save(m, cb);
 };
 
 module.exports = Message;

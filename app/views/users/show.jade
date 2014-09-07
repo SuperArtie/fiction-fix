@@ -1,6 +1,7 @@
 extends ../shared/template
 block content
   h2 Profile
+<<<<<<< HEAD
   .panel.panel-primary
     .panel-heading
       h3.panel-title #{client.name || client.username || client.displayName || client.email}'s Profile
@@ -35,4 +36,28 @@ block content
           .photo
             img.img.img-thumbnail.img-responsive(src=photo)
 
+  .panel.panel-default
+    img(src=client.photo)
+      .panel-body
+        form(role='form', method='post', action='/messages/#{client._id}')
+          .row
+            .col-xs-6
+              .radio
+                label
+                  input(type='radio' name='mtype' value='text' checked=true)
+                  span Text
+              .radio
+                label
+                  input(type='radio' name='mtype' value='email')
+                  span Email
+              .radio
+                label
+                  input(type='radio' name='mtype' value='internal')
+                  span Internal
+            .col-xs-6
+              .form-group
+                label(for='message') Message
+                textarea.form-control#message(name='message', autofocus=true)
+              .form-group
+                button.btn.btn-info.btn-sm(type='submit') Send Message
 block scripts

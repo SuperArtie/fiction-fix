@@ -2,7 +2,7 @@
   "_id":{"$oid":"c00000000000000000000001"},
   "senderId":{"$oid":"000000000000000000000002"},
   "receiverId":{"$oid":"000000000000000000000001"},
-  "message":"Hey Bob,\nThis is a test message in the database",
+  "body":"Hey Bob,\nThis is a test message in the database",
   "date":{"$date":1409541250448},
   "isRead":false
 }
@@ -10,7 +10,7 @@
   "_id":{"$oid":"c00000000000000000000002"},
   "senderId":{"$oid":"000000000000000000000002"},
   "receiverId":{"$oid":"000000000000000000000001"},
-  "message":"Hey Bob,\nThis is a test message in the database that you read already",
+  "body":"Hey Bob,\nThis is a test message in the database that you read already",
   "date":{"$date":1409541250448},
   "isRead":true
 }

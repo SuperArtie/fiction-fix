@@ -1,4 +1,5 @@
 'use strict';
+<<<<<<< HEAD
 var config = require('../../config'),
     Item = require('../models/item'),
     User = require('../models/user'),

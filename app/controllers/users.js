@@ -103,4 +103,10 @@ exports.makePrimary = function(req, res){
   });
 };
 
-
+exports.send = function(req, res){
+  User.findById(req.params.receiverId, function(err, receiver){
+    res.locals.user.send(receiver, req.body, function(){
+      res.redirect('/profile/' + receiver.email);
+    });
+  });
+};

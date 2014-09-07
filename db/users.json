@@ -16,9 +16,9 @@
 }
 {
   "_id" : {"$oid":"000000000000000000000002"},
-  "email" : "sue@aol.com",
+  "email" : "daniel.s.roden@gmail.com",
   "name"  : "sue",
-  "phone": "615-555-5555",
+  "phone": "845-417-6538",
   "password" : "$2a$10$sjPx9TkrEASeXzH6uuDCDO.n1Sj/H2A/bu/9hBFfm5fm3Z4LzrEPa",
   "loc": {"name":"Las Vegas, NV, USA", "lat":36.1699412, "lng":-115.13982959999998},
   "category": "comics",
