@@ -129,6 +129,7 @@ describe('users', function(){
       });
     });
   });
+
   describe('post /wink', function(){
     it('create a wink and redirect', function(done){
       request(app)
@@ -142,6 +143,7 @@ describe('users', function(){
       });
     });
   });
+
   describe('get /photos', function(){
     it('should show the photo manager page', function(done){
       request(app)
@@ -150,6 +152,33 @@ describe('users', function(){
       .end(function(err, res){
         expect(res.status).to.equal(200);
         expect(res.text).to.include('Manage Your Photos');
+        done();
+      });
+    });
+  });
+
+  describe('post /proposal', function(){
+    it('create a proposal and redirect', function(done){
+      request(app)
+      .post('/proposal/000000000000000000000002')
+      .send('message=hey%dateProposed=2014-11-01')
+      .set('cookie', cookie)
+      .end(function(err, res){
+        expect(res.status).to.equal(302);
+        expect(res.headers.location).to.equal('/profile/daniel.s.roden@gmail.com');
+        done();
+      });
+    });
+  });
+
+  describe('get /proposal/id', function(){
+    it('get a proposal', function(done){
+      request(app)
+      .get('/proposals/e00000000000000000000001')
+      .set('cookie', cookie)
+      .end(function(err, res){
+        expect(res.status).to.equal(200);
+        expect(res.text).to.include('daniel.s.roden@gmail.com');
         done();
       });
     });

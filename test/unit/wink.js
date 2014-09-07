@@ -34,7 +34,7 @@ describe('Wink', function(){
     it('should create and save a wink', function(done){
       Wink.create('000000000000000000000001','000000000000000000000002', function(){
         Wink.all(function(err, winks){
-          expect(winks).to.have.length(6)
+          expect(winks).to.have.length(6);
           done();
         });
       });
