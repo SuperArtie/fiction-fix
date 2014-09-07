@@ -27,6 +27,18 @@ block content
 
   .panel.panel-primary
     .panel-heading
+      h3.panel-title Favorites
+    .panel-body
+      if user.favorites.length === 0
+        h4 You have no favorites.
+      else
+        table.table.table-hover.table-bordered
+          tbody
+            each fav in user.favorites
+              tr
+                td: a.btn.btn-warning.btn-xs(href='/profile/#{fav}')= fav
+  .panel.panel-primary
+    .panel-heading
       h3.panel-title Messages
     .panel-body
       if messages.length === 0

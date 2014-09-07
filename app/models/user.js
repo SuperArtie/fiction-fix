@@ -99,6 +99,11 @@ User.prototype.save = function(o, cb){
   User.collection.save(this, cb);
 };
 
+User.prototype.addFavorite = function(fav, cb){
+  this.favorites.push(fav);
+  User.collection.save(this, cb);
+};
+
 User.prototype.dashboard = function(cb){
   //winks
   var dashboard = {},

@@ -79,6 +79,12 @@ exports.wink = function(req, res){
   });
 };
 
+exports.favorite = function(req, res){
+  res.locals.user.addFavorite(req.body.email, function(){
+    res.redirect('/profile/'+req.body.email);
+  });
+};
+
 exports.photos = function(req, res){
   res.render('users/photos');
 };

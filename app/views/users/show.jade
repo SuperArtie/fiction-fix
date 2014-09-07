@@ -24,6 +24,9 @@ block content
           form(role='form', method='post', action='/wink')
             input(type='hidden', name='receiverId', value='#{client._id}')
             button.btn.btn-primary(type='submit') Send a Wink to #{client.name || client.displayName}
+          form(role='form', method='post', action='/favorite')
+            input(type='hidden', name='email', value='#{client.email}')
+            button.btn.btn-primary(type='submit') Add to favorites!
   .panel.panel-primary
     .panel-heading
       h3.panel-title Photos
