@@ -1,16 +1,7 @@
 {
-  "_id":{"$oid":"c00000000000000000000001"},
-  "senderId":{"$oid":"000000000000000000000002"},
-  "receiverId":{"$oid":"000000000000000000000001"},
-  "body":"Hey Bob,\nThis is a test message in the database",
-  "date":{"$date":1409541250448},
-  "isRead":false
-}
-{
-  "_id":{"$oid":"c00000000000000000000002"},
-  "senderId":{"$oid":"000000000000000000000002"},
-  "receiverId":{"$oid":"000000000000000000000001"},
-  "body":"Hey Bob,\nThis is a test message in the database that you read already",
-  "date":{"$date":1409541250448},
-  "isRead":true
+    "_id" : ObjectId("540ce56335bfb73810161bc4"),
+    "senderId" : ObjectId("540ce27835bfb73810161bc3"),
+    "receiverId" : ObjectId("540cdeec220d1ad20fdfd8e7"),
+    "body" : "Woohoo! Your date proposal to name@aol.com was accepted!",
+    "date" : ISODate("2014-09-07T23:08:19.289Z")
 }

@@ -1,20 +1,21 @@
 {
-  "_id":{"$oid":"e00000000000000000000001"},
-  "senderId":{"$oid":"000000000000000000000002"},
-  "receiverId":{"$oid":"000000000000000000000001"},
-  "body":"Hey Bob,\nThis is a test message in the database",
-  "dateProposed": {"$date":1409541250448},
-  "date":{"$date":1409541250448},
-  "isRead": false,
-  "isAccepted":false
+    "_id" : ObjectId("540ce4f8220d1ad20fdfd8e8"),
+    "senderId" : ObjectId("540cdeec220d1ad20fdfd8e7"),
+    "receiverId" : ObjectId("540ce27835bfb73810161bc3"),
+    "isAccepted" : false,
+    "body" : "I need you to be my whipping boy young man.",
+    "dateProposed" : ISODate("2014-09-26T00:00:00.000Z"),
+    "date" : ISODate("2014-09-07T23:06:32.126Z"),
+    "isRead" : true
 }
+
 {
-  "_id":{"$oid":"e00000000000000000000002"},
-  "senderId":{"$oid":"000000000000000000000001"},
-  "receiverId":{"$oid":"000000000000000000000002"},
-  "body":"Hey Bob,\nThis is a test message in the database",
-  "dateProposed": {"$date":1409541250448},
-  "date":{"$date":1409541250448},
-  "isRead": false,
-  "isAccepted":false
+    "_id" : ObjectId("540ce5988915dcb50f94538f"),
+    "senderId" : ObjectId("540cdc8c8915dcb50f94538e"),
+    "receiverId" : ObjectId("540cdeec220d1ad20fdfd8e7"),
+    "isAccepted" : false,
+    "body" : "I love you madly dear",
+    "dateProposed" : ISODate("2014-09-18T00:00:00.000Z"),
+    "date" : ISODate("2014-09-07T23:09:12.811Z"),
+    "isRead" : false
 }

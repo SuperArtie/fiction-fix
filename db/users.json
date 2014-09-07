@@ -1,34 +1,82 @@
 {
-  "_id" : {"$oid":"000000000000000000000001"},
-  "email" : "bob@aol.com",
-  "password" : "$2a$10$XR.IQktUUujLBxed70GQn.jWY1wZ9ThM0Tar9wTqzkI4Uk1uP2Or2",
-  "loc": {"name":"Nashville, TN, USA", "lat":36.166667, "lng":-86.78333299999997},
-  "name" : "bobby",
-  "phone": "615-555-5555",
-  "category": "cartoon",
-  "about": "bob from bob's burgers",
-  "primaryPhoto": "http://placekitten.com/300/300",
-  "photos": ["/img/000000000000000000000001/bob1.jpg","/img/000000000000000000000001/bob2.jpg" ],
-  "age": "15",
-  "isPublic" : true,
-  "seeking": "Lovers",
-  "tagline": "burger up"
+    "_id" : ObjectId("540cdc8c8915dcb50f94538e"),
+    "email" : "nathan.superartie@gmail.com",
+    "password" : "$2a$10$K6rDCEbKwha1yicTSQiSXu6Iql10HHwJMcgRF5.HoP3fRsD1rRMde",
+    "favorites" : [ 
+        "nathanvasquez88@gmail.com"
+    ],
+    "loc" : {
+        "name" : "Shreveport, LA, USA",
+        "lat" : "32.5251516",
+        "lng" : "-93.75017889999998"
+    },
+    "photos" : [ 
+        "/img/540cdc8c8915dcb50f94538e/0.jpg", 
+        "/img/540cdc8c8915dcb50f94538e/1.jpg", 
+        "/img/540cdc8c8915dcb50f94538e/2.jpg", 
+        "/img/540cdc8c8915dcb50f94538e/3.jpg"
+    ],
+    "isPublic" : true,
+    "name" : "Batman",
+    "phone" : "615-243-6771",
+    "age" : "37",
+    "tagline" : "I am the dark knight of the soul",
+    "category" : "Comic",
+    "seeking" : "Lovers",
+    "about" : "Even though I am the dark knight of the soul, I assure you I'm not the jealous type. It's cool if you still keep in touch with that one ex, I don't mind, seriously!!! Just tell me his name, address, and a list of all of his allergies.",
+    "primaryPhoto" : "/img/540cdc8c8915dcb50f94538e/3.jpg"
 }
+
 {
-  "_id" : {"$oid":"000000000000000000000002"},
-  "email" : "daniel.s.roden@gmail.com",
-  "name"  : "sue",
-  "phone": "845-417-6538",
-  "password" : "$2a$10$sjPx9TkrEASeXzH6uuDCDO.n1Sj/H2A/bu/9hBFfm5fm3Z4LzrEPa",
-  "loc": {"name":"Las Vegas, NV, USA", "lat":36.1699412, "lng":-115.13982959999998},
-  "category": "comics",
-  "about": "sue storm",
-  "primaryPhoto": "http://placekitten.com/300/300",
-  "photos": ["/img/000000000000000000000002/sue1.jpg","/img/000000000000000000000002/sue2.jpg" ],
-  "age": "22",
-  "isPublic" : true,
-  "seeking": "Friends",
-  "tagline": "storming in"
+    "_id" : ObjectId("540cdeec220d1ad20fdfd8e7"),
+    "email" : "nathanvasquez88@gmail.com",
+    "password" : "$2a$10$4QDSSoYaLUco.8XJinHWnelWyftvVslaeqxXpAimX041G2QyTDqYu",
+    "favorites" : [ 
+        "name@aol.com"
+    ],
+    "loc" : {
+        "name" : "Biloxi, MS, USA",
+        "lat" : "30.3960318",
+        "lng" : "-88.88530779999996"
+    },
+    "photos" : [ 
+        "/img/540cdeec220d1ad20fdfd8e7/0.jpg", 
+        "/img/540cdeec220d1ad20fdfd8e7/1.jpg", 
+        "/img/540cdeec220d1ad20fdfd8e7/2.jpg"
+    ],
+    "isPublic" : true,
+    "name" : "Catwoman",
+    "phone" : "615-243-6771",
+    "age" : "32",
+    "tagline" : "My real name is Caitlin",
+    "category" : "Cartoon",
+    "seeking" : "Rivals",
+    "about" : "I am looking for a rival. Not just any rival either. A quirky one. Like a 200 dollars to let me whip you for hours kind of rival. Negotiable.",
+    "primaryPhoto" : "/img/540cdeec220d1ad20fdfd8e7/1.jpg"
 }
 
-
+{
+    "_id" : ObjectId("540ce27835bfb73810161bc3"),
+    "email" : "name@aol.com",
+    "password" : "$2a$10$.LPY.wPBnkweANyKRM6TcOUUc.P162t.J3/iI1VMnYT71sEaEtW7.",
+    "favorites" : [],
+    "loc" : {
+        "name" : "Hope, AR 71801, USA",
+        "lat" : "33.6670615",
+        "lng" : "-93.5915665"
+    },
+    "photos" : [ 
+        "/img/540ce27835bfb73810161bc3/0.png", 
+        "/img/540ce27835bfb73810161bc3/1.gif", 
+        "/img/540ce27835bfb73810161bc3/2.png"
+    ],
+    "isPublic" : true,
+    "name" : "Martin Prince",
+    "phone" : "615-243-6771",
+    "age" : "9",
+    "tagline" : "The summer wind came blowin' in from across the sea",
+    "category" : "TV",
+    "seeking" : "Friends",
+    "about" : "Finally I will be queen of summer!!! I just got a pool! There's still room over here!",
+    "primaryPhoto" : "/img/540ce27835bfb73810161bc3/1.gif"
+}

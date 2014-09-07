@@ -1,21 +1,15 @@
 {
-  "_id" : {"$oid":"b00000000000000000000001"},
-  "itemId": {"$oid":"a00000000000000000000001"},
-  "senderId": {"$oid":"000000000000000000000001"},
-  "receiverId": {"$oid":"000000000000000000000002"},
-  "date":{"$date":1406851200000}
+    "_id" : ObjectId("540ce516220d1ad20fdfd8e9"),
+    "itemId" : ObjectId("a00000000000000000000002"),
+    "senderId" : ObjectId("540cdeec220d1ad20fdfd8e7"),
+    "receiverId" : ObjectId("540ce27835bfb73810161bc3"),
+    "date" : ISODate("2014-09-07T23:07:02.125Z")
 }
+
 {
-  "_id" : {"$oid":"b00000000000000000000002"},
-  "itemId": {"$oid":"a00000000000000000000002"},
-  "senderId": {"$oid":"000000000000000000000001"},
-  "receiverId": {"$oid":"000000000000000000000002"},
-  "date":{"$date":1406851200000}
-}
-{
-  "_id" : {"$oid":"b00000000000000000000003"},
-  "itemId": {"$oid":"a00000000000000000000003"},
-  "senderId": {"$oid":"000000000000000000000002"},
-  "receiverId": {"$oid":"000000000000000000000001"},
-  "date":{"$date":1406851200000}
+    "_id" : ObjectId("540ce5af8915dcb50f945390"),
+    "itemId" : ObjectId("a00000000000000000000002"),
+    "senderId" : ObjectId("540cdc8c8915dcb50f94538e"),
+    "receiverId" : ObjectId("540cdeec220d1ad20fdfd8e7"),
+    "date" : ISODate("2014-09-07T23:09:35.071Z")
 }
