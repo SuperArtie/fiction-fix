@@ -2,12 +2,15 @@
 
 var Mongo = require('mongodb'),
     async = require('async');
-function Proposal(o){
-  this.senderId = o.senderId;
-  this.receiverId = o.receiverId;
-  this.reply = o.reply;
-  this.body = o.body;
+
+function Proposal(senderId, receiverId, o){
+  this.senderId = senderId;
+  this.receiverId = receiverId;
+  this.isAccepted = false;
+  this.body = o.message;
+  this.dateProposed = new Date(o.dateProposed);
   this.date = new Date();
+  this.isRead = false;
 }
 
 Object.defineProperty(Proposal, 'collection', {
@@ -32,6 +35,28 @@ Proposal.proposals = function(receiverId, cb){
   var _id = Mongo.ObjectID(receiverId);
   Proposal.collection.find({receiverId:_id}).toArray(function(err, proposals){
     async.map(proposals, iterator, cb);
+  });
+};
+
+Proposal.send = function(senderId, receiverId, message, cb){
+  var m = new Proposal(senderId, receiverId, message);
+  Proposal.collection.save(m, cb);
+};
+
+Proposal.read = function(id, cb){
+  var _id = Mongo.ObjectID(id);
+  Proposal.collection.findAndModify({_id:_id}, [], {$set:{isRead:true}}, function(err, prop){
+    iterator(prop, cb);
+  });
+};
+
+Proposal.response = function(propId, obj, cb){
+  Proposal.findById(propId, function(err, prop){
+    var receiverId =  prop.receiverId.toString();
+    require('./user').findById(receiverId, function(err, receiver){
+      var accepted = (obj.propAccepted === 'no') ? 'Sorry, your date proposal to ' + receiver.email + ' was not accepted.'  : 'Woohoo! Your date proposal to ' + receiver.email + ' was accepted!';
+      require('./message').send(prop.receiverId, prop.senderId, accepted, cb);
+    });
   });
 };
 

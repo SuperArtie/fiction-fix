@@ -1,7 +1,8 @@
 'use strict';
 
 var User = require('../models/user'),
-    mp   = require('multiparty');
+    mp   = require('multiparty'),
+    Proposal   = require('../models/proposal');
 
 exports.new = function(req, res){
   res.render('users/new');
@@ -73,7 +74,7 @@ exports.show = function(req,res){
 exports.wink = function(req, res){
   require('../models/wink').create(req.user._id, req.body.receiverId, function(){
     User.findById(req.body.receiverId, function(err, receiver){
-      req.flash('success', 'You just sent a wink to ' +  receiver.email)
+      req.flash('success', 'You just sent a wink to ' +  receiver.email);
       res.redirect('/profile/'+receiver.email);
     });
   });
@@ -114,5 +115,27 @@ exports.send = function(req, res){
     res.locals.user.send(receiver, req.body, function(){
       res.redirect('/profile/' + receiver.email);
     });
+  });
+};
+
+exports.propose = function(req, res){
+  console.log(req.body);
+  User.findById(req.params.receiverId, function(err, receiver){
+    res.locals.user.propose(receiver, req.body, function(){
+      res.redirect('/profile/' + receiver.email);
+    });
+  });
+};
+
+exports.readProposal = function(req, res){
+  Proposal.read(req.params.proposalId, function(err, prop){
+    console.log(prop);
+    res.render('proposals/show', {prop: prop});
+  });
+};
+
+exports.proposalResponse = function(req, res){
+  Proposal.response(req.params.proposalId, req.body, function(){
+    res.redirect('/dashboard');
   });
 };

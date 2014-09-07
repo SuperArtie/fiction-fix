@@ -61,6 +61,9 @@ module.exports = function(app, express){
   app.post('/photos/primary', users.makePrimary);
   app.post('/messages/:receiverId', users.send);
   app.post('/favorite', users.favorite);
+  app.post('/proposal/:receiverId', users.propose);
+  app.get('/proposals/:proposalId', users.readProposal);
+  app.post('/proposal/response/:proposalId',users.proposalResponse);
 
   console.log('Express: Routes Loaded');
 };

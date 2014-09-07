@@ -163,6 +163,10 @@ User.prototype.send = function(receiver, obj, cb){
   }
 };
 
+User.prototype.propose = function(receiver, obj, cb){
+  require('./proposal').send(this._id, receiver._id, obj, cb);
+};
+
 module.exports = User;
 
 function sendText(to, body, cb){

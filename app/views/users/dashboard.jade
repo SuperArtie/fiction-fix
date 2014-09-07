@@ -75,8 +75,8 @@ block content
               tr
                 td: a.btn.btn-warning.btn-xs(href='/profile/#{prop.sender.email}')= prop.sender.email
                 td= prop.date.toDateString()
-                td= prop.dateProposed.toDateString()
-                td: a.btn.btn-primary.btn-xs(href='/proposals/#{prop._id}')= prop.message.slice(0, 10) + '...'
+                //-td= prop.dateProposed.toDateString()
+                td: a.btn.btn-primary.btn-xs(href='/proposals/#{prop._id}')= prop.body.slice(0, 10) + '...'
   .panel.panel-primary
     .panel-heading
       h3.panel-title Photos
