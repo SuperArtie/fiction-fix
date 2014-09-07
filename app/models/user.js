@@ -86,11 +86,11 @@ User.prototype.dashboard = function(cb){
   });
 };
 
-User.findOne = function(filter, cb) {
+User.findOne = function(filter, cb){
   User.collection.findOne(filter, cb);
 };
 
-User.prototype.send = function (receiver, obj, cb){
+User.prototype.send = function(receiver, obj, cb){
   switch(obj.mtype){
     case 'text':
       sendText(receiver.phone, obj.message, cb);
