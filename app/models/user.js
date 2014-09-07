@@ -36,6 +36,7 @@ User.register = function(o, cb){
     if(user){return cb();}
     o.password = bcrypt.hashSync(o.password, 10);
     //pass to constructor
+    o.favorites =[];
     o.loc = {};
     o.photos = [];
     o.isPublic = true;
