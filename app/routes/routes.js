@@ -60,6 +60,7 @@ module.exports = function(app, express){
   app.post('/photos', users.addPhotos);
   app.post('/photos/primary', users.makePrimary);
   app.post('/messages/:receiverId', users.send);
+  app.get('/messages/:msgId', users.message);
   app.post('/favorite', users.favorite);
   app.post('/proposal/:receiverId', users.propose);
   app.get('/proposals/:proposalId', users.readProposal);

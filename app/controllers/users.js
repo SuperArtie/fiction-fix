@@ -2,7 +2,8 @@
 
 var User = require('../models/user'),
     mp   = require('multiparty'),
-    Proposal   = require('../models/proposal');
+    Proposal   = require('../models/proposal'),
+    Message   = require('../models/message');
 
 exports.new = function(req, res){
   res.render('users/new');
@@ -145,3 +146,13 @@ exports.query = function(req,res){
     res.render('users/browse', {users:users});
   });
 };
+
+exports.message = function(req, res){
+  Message.read(req.params.msgId, function(err, msg){
+    res.render('users/message', {msg:msg});
+  });
+};
+
+
+
+

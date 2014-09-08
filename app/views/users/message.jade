@@ -1,0 +1,8 @@
+extends ../shared/template
+block content
+  h2= msg.sender.email
+  p Date : #{msg.date.toDateString()}
+  p Body : #{msg.message}
+
+block scripts
+

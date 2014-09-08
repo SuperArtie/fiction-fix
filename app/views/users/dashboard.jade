@@ -52,7 +52,7 @@ block content
               th Message
           tbody
             each msg in messages
-              tr
+              tr(style='background-color:#{msg.isRead ? "#eeeeee" : "#aaaaaa"} !important;')
                 td: a.btn.btn-warning.btn-xs(href='/profile/#{msg.sender.email}')= msg.sender.email
                 td= msg.date.toDateString()
                 td: a.btn.btn-primary.btn-xs(href='/messages/#{msg._id}')= msg.body.slice(0, 10) + '...'
@@ -72,7 +72,7 @@ block content
               th Message
           tbody
             each prop in proposals
-              tr
+              tr(style='background-color:#{prop.isRead ? "#eeeeee" : "#aaaaaa"} !important;')
                 td: a.btn.btn-warning.btn-xs(href='/profile/#{prop.sender.email}')= prop.sender.email
                 td= prop.date.toDateString()
                 td= prop.dateProposed.toDateString()

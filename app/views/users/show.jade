@@ -15,7 +15,6 @@ block content
           p Age: &nbsp; #{client.age}
           p Category: &nbsp; #{client.category}
           p Looking for: &nbsp; #{client.seeking}
-          p Phone: &nbsp; #{client.phone}
       .col-lg-2.col-xs-12
         if client._id.toString() !== user._id.toString()
           a#buyGift.btn.btn-primary(href='/gift/#{client._id}') Send a Gift to #{client.name || client.username || client.displayName}
