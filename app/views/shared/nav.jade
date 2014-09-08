@@ -11,7 +11,9 @@
     .collapse.navbar-collapse#bs-navbar-collapse
       ul.nav.navbar-nav.navbar-right
         if user
-          li: a(href='/dashboard') Dashboard
+          li: a(href='/dashboard')
+            span Dashboard
+            span.badge
           li: a(href='/browse') Browse
           li
             form.navbar-form(method='post', action='/logout')
