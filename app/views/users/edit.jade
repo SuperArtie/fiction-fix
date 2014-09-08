@@ -1,60 +1,62 @@
 extends ../shared/template
 block content
+  body.bg
   h2 Edit Profile
-  .row
-    .col-xs-6
-      form(role='form', method='post', action='/user')
-        input(type='hidden', name='_method', value='put')
-        .form-group
-          label(for='email') Email
-          input.form-control#email(type='email', name='email', value=user.email, autofocus=true)
-        .form-group
-          label(for='name') Name
-          input.form-control#name(type='text', name='name', value=user.name)
-        .form-group
-          label(for='phone') Phone
-          input.form-control#phone(type='text', name='phone', value=user.phone)
-         .form-group
-           label(for='age') Age
-           input.form-control#age(type='number', name='age', value=user.age)
-         .form-group
-           label(for='tagline') Tagline
-           input.form-control#tagline(type='text', name='tagline', value=user.tagline)
-        .form-group
-            label(for='locName') Location:
-            input.form-control#locName(type='text', name='loc', value=user.loc.name)
-            input.form-control#locLat(type='hidden', name='loc', value=user.loc.lat)
-            input.form-control#locLng(type='hidden', name='loc', value=user.loc.lng)
-        .form-group
-          p Your current category is #{user.category}
-          label(for='category') Choose your category: &nbsp;
-          select#category(name='category')
-            option(value='Movie') Movie
-            option(value='Book') Book
-            option(value='Cartoon') Cartoon
-            option(value='TV') TV
-            option(value='Comic') Comic
-            option(value='Game') Game
-        .form-group
-          p You are currently seeking #{user.seeking}
-          label(for='seeking') Who are you seeking: &nbsp;
-          select#seeking.dropdown(name='seeking', selected=user.seeking)
-            option(value='Friends') Friends
-            option(value='Sidekicks') Sidekicks
-            option(value='Rivals') Rivals
-            option(value='Nemesis') Nemesis
-            option(value='Lovers') Lovers
-         .form-group
-           label(for='about') About Me
-           textarea.form-control#about(name='about', value= user.about)
-         .form-group
-           label(for='public') Visibility
-           input(type='radio', name='isPublic', value=true, checked=user.isPublic==true)
-           | Public
-           input(type='radio', name='isPublic', value='false', checked=user.isPublic==false)
-           | Private
-        button.btn.btn-primary(type='submit') Submit
-    .col-xs-6
+  .panel
+    .row
+      .col-xs-6
+        form(role='form', method='post', action='/user')
+          input(type='hidden', name='_method', value='put')
+          .form-group
+            label(for='email') Email
+            input.form-control#email(type='email', name='email', value=user.email, autofocus=true)
+          .form-group
+            label(for='name') Name
+            input.form-control#name(type='text', name='name', value=user.name)
+          .form-group
+            label(for='phone') Phone
+            input.form-control#phone(type='text', name='phone', value=user.phone)
+           .form-group
+             label(for='age') Age
+             input.form-control#age(type='number', name='age', value=user.age)
+           .form-group
+             label(for='tagline') Tagline
+             input.form-control#tagline(type='text', name='tagline', value=user.tagline)
+          .form-group
+              label(for='locName') Location:
+              input.form-control#locName(type='text', name='loc', value=user.loc.name)
+              input.form-control#locLat(type='hidden', name='loc', value=user.loc.lat)
+              input.form-control#locLng(type='hidden', name='loc', value=user.loc.lng)
+          .form-group
+            p Your current category is #{user.category}
+            label(for='category') Choose your category: &nbsp;
+            select#category(name='category')
+              option(value='Movie') Movie
+              option(value='Book') Book
+              option(value='Cartoon') Cartoon
+              option(value='TV') TV
+              option(value='Comic') Comic
+              option(value='Game') Game
+          .form-group
+            p You are currently seeking #{user.seeking}
+            label(for='seeking') Who are you seeking: &nbsp;
+            select#seeking.dropdown(name='seeking', selected=user.seeking)
+              option(value='Friends') Friends
+              option(value='Sidekicks') Sidekicks
+              option(value='Rivals') Rivals
+              option(value='Nemesis') Nemesis
+              option(value='Lovers') Lovers
+           .form-group
+             label(for='about') About Me
+             textarea.form-control#about(name='about', value= user.about)
+           .form-group
+             label(for='public') Visibility
+             input(type='radio', name='isPublic', value=true, checked=user.isPublic==true)
+             | Public
+             input(type='radio', name='isPublic', value='false', checked=user.isPublic==false)
+             | Private
+          button.btn.btn-primary(type='submit') Submit
+      .col-xs-6
 
 block scripts
   script(src='/js/user/editProfile.js')

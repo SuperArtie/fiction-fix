@@ -2,7 +2,7 @@
     "_id" : ObjectId("540ce516220d1ad20fdfd8e9"),
     "itemId" : ObjectId("a00000000000000000000002"),
     "senderId" : ObjectId("540cdeec220d1ad20fdfd8e7"),
-    "receiverId" : ObjectId("540ce27835bfb73810161bc3"),
+    "receiverId" : ObjectId("$oid":"540ce27835bfb73810161bc3"),
     "date" : ISODate("2014-09-07T23:07:02.125Z")
 }
 

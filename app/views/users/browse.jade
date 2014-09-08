@@ -1,43 +1,56 @@
 extends ../shared/template
 block content
-  h2 browse
+  body.bg
+    .row
+      .col-md-5
+      .col-md-4
+        h2 Find Your Match!
   #map
   .row
     .col-xs-12
-      .form-group
-      form(role='form', method='post', action='/query')
-        p Show me characters from a &nbsp
-          select#category(name='search1')
-            option(value='Movie') Movie
-            option(value='Book') Book
-            option(value='Cartoon') Cartoon
-            option(value='TV') TV
-            option(value='Comic') Comic
-            option(value='Game') Game
-          span &nbsp who are looking for &nbsp
-            select#seeking.dropdown(name='search2') &nbsp
-              option(value='Friends') Friends
-              option(value='Sidekicks') Sidekicks
-              option(value='Rivals') Rivals
-              option(value='Nemesis') Nemesis
-              option(value='Lovers') Lovers
-          span &nbsp
-          button.btn.btn-success.btn-sm(type='submit') SEARCH
+      .panel
+        .panel-heading
+          h4 Find the one, or two! 
+        .panel-body
           .form-group
-  .row
-    .col-xs-9
-      table.table.table-striped.table-hover
-        thead
-          th Name
-          th Location
-          th Age
-          th looking for
-        tbody
-          each user in users
-            tr(data-name=user.loc.name, data-lat=user.loc.lat, data-lng=user.loc.lng)
-             td: a(href='/profile/#{user.email}')= user.name || user.username || user.displayName ||user.email
-             td= user.loc.name || 'N/A'
-             td= user.age || 'N/A'
-             td= user.seeking || 'N/A'
+          form(role='form', method='post', action='/query')
+            p Show me characters from a &nbsp
+              select#category(name='search1')
+                option(value='Movie') Movie
+                option(value='Book') Book
+                option(value='Cartoon') Cartoon
+                option(value='TV') TV
+                option(value='Comic') Comic
+                option(value='Game') Game
+              span &nbsp who are looking for &nbsp
+                select#seeking.dropdown(name='search2') &nbsp
+                  option(value='Friends') Friends
+                  option(value='Sidekicks') Sidekicks
+                  option(value='Rivals') Rivals
+                  option(value='Nemesis') Nemesis
+                  option(value='Lovers') Lovers
+              span &nbsp
+              button.btn.btn-success.btn-sm(type='submit') SEARCH
+              .form-group
+        .row
+          .col-xs-12
+            table.table.table-hover
+              thead
+                th Photo
+                th Name
+                th Location
+                th Age
+                th Category
+                th Seeking
+              tbody
+                each user in users
+                  tr(data-name=user.loc.name, data-lat=user.loc.lat, data-lng=user.loc.lng)
+                   td
+                     img.img-responsive.img-thumbnail(src=user.primaryPhoto, style="max-height:100px ")
+                   td: a(href='/profile/#{user.email}')= user.name || user.username || user.displayName ||user.email
+                   td= user.loc.name || 'N/A'
+                   td= user.age || 'N/A'
+                   td= user.category || 'N/A'
+                   td= user.seeking || 'N/A'
 block scripts
   script(src='/js/user/browse.js')

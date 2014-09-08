@@ -34,16 +34,16 @@ module.exports = function(app, express){
   app.post('/register', users.create);
   app.get('/login', users.login);
   //app.post('/login', users.authenticate);
-  app.post('/login', passport.authenticate('local', {successRedirect:'/', failureRedirect:'/login', successFlash:'You are logged in!', failureFlash:'Incorrect email/password'}));
+  app.post('/login', passport.authenticate('local', {successRedirect:'/dashboard', failureRedirect:'/login', successFlash:'You are logged in!', failureFlash:'Incorrect email/password'}));
 
   app.get('/auth/twitter', passport.authenticate('twitter'));
-  app.get('/auth/twitter/callback', passport.authenticate('twitter', {successRedirect:'/', failureRedirect:'/login', successFlash:'You are logged with Twitter!', failureFlash:'Failed to login through Twitter'}));
+  app.get('/auth/twitter/callback', passport.authenticate('twitter', {successRedirect:'/dashboard', failureRedirect:'/login', successFlash:'You are logged with Twitter!', failureFlash:'Failed to login through Twitter'}));
 
   app.get('/auth/facebook', passport.authenticate('facebook'));
-  app.get('/auth/facebook/callback', passport.authenticate('facebook', {successRedirect:'/', failureRedirect:'/login', successFlash:'You are logged with Facebook!', failureFlash:'Failed to login through Facebook'}));
+  app.get('/auth/facebook/callback', passport.authenticate('facebook', {successRedirect:'/dashboard', failureRedirect:'/login', successFlash:'You are logged with Facebook!', failureFlash:'Failed to login through Facebook'}));
 
   app.get('/auth/google', passport.authenticate('google',  {scope: ['https://www.googleapis.com/auth/plus.login', 'https://www.googleapis.com/auth/plus.profile.emails.read']}));
-  app.get('/auth/google/callback', passport.authenticate('google', {successRedirect:'/', failureRedirect:'/login', successFlash:'You are logged with Google!', failureFlash:'Failed to login through Google'}));
+  app.get('/auth/google/callback', passport.authenticate('google', {successRedirect:'/dashboard', failureRedirect:'/login', successFlash:'You are logged with Google!', failureFlash:'Failed to login through Google'}));
 
 
   app.use(security.bounce);

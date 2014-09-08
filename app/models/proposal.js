@@ -57,7 +57,7 @@ Proposal.response = function(propId, obj, cb){
     require('./user').findById(receiverId, function(err, receiver){
       var message = (obj.propAccepted === 'no') ? 'Sorry, your proposal to ' + receiver.email + ' has been declined. There are plenty of other cartoons in the sea!' : 'Your proposal for a date from ' + receiver.email + ' has been accepted. Text this person at: ' + receiver.phone + ' or log on to FictionFix and send them a message!';
       //var accepted = (obj.propAccepted === 'no  ') ? 'Sorry, your date proposal to ' + receiver.email + ' was not accepted.'  : 'Woohoo! Your date proposal to ' + receiver.email + ' was accepted!';
-     sendText(receiver.phone, message, cb);
+      sendText(receiver.phone, message, cb);
            //require('./message').send(prop.receiverId, prop.senderId, accepted, cb);
     });
   });

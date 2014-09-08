@@ -1,17 +1,19 @@
 extends ../shared/template
 block content
-  h2 Login
-  .row
-    .col-xs-6
-      form(role='form', method='post', action='/login')
-        .form-group
-          label(for='email') Email
-          input.form-control#email(type='email', name='email', autofocus=true)
-        .form-group
-          label(for='password') Password
-          input.form-control#password(type='password', name='password')
-        button.btn.btn-success(type='submit') Submit
-    .col-xs-6
+  body.loginPage
+    .row
+      .col-md-4
+      .col-xs-12.col-md-4
+        h2.loginHeader Login
+        form(role='form', method='post', action='/login')
+          .form-group
+            label(for='email')
+            input.form-control.input-bar#email(type='email', name='email', placeholder= 'Email' autofocus=true)
+          .form-group
+            label(for='password')
+            input.form-control.input-bar#password(type='password', name='password', placeholder= 'Password')
+          button.btn.green-btn(type='submit') Submit
+      .col-xs-6
 
 block scripts
 

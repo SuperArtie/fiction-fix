@@ -1,15 +1,172 @@
 @base: #f938ab;
+@yellow: #F2CA08;
+@green: #069902;
 
-body{
-  background-color: saturate(@base, 5%);
+@import url(http://fonts.googleapis.com/css?family=Bangers);
+
+.navbar-default {
+  background-color: @yellow;
+  border-radius: 0px;
+  border: 1px solid black;
 }
+
+.logout-btn {
+  background-color: @green;
+}
+
+.logout-btn:hover {
+  background-color: green;
+}
+
+
+///////////////////////////////////////////////////Home
+
+body#home{
+  background-image: url('/img/fiction-fix.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+#slogan {
+  position: relative;
+  top: 180px;
+  left: 548px;
+  color: black;
+  font-size: 25px;
+  font-family: 'Bangers';
+}
+
+#logo {
+  color: black;
+  font-family: 'Bangers';
+  font-size: 30px;
+}
+
+#register {
+  position: relative;
+  top: 180px;
+  left: 562px;
+  padding: 3px;
+  color: @green;
+}
+
+#login {
+  position: relative;
+  top: 180px;
+  left: 580px;
+  padding: 3px;
+  color: @green;
+}
+
+#login:hover {
+  color: @yellow;
+}
+
+#register:hover {
+  color: @yellow;
+}
+
+////////////////////////////////////////////////Login
+.input-bar{
+  margin: 0px;
+  background-color: @yellow;
+  padding: 30px;
+  color: black;
+  font-size: 20px;
+  border: 0px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+body.loginPage {
+  position: relative;
+  background-color: black;
+}
+
+.loginHeader {
+  font-size: 20px;
+  text-align: center;
+  color: @yellow;
+}
+
+.green-btn {
+  position: relative;
+  left: 40%;
+ background-color: @green;
+}
+
+.green-btn:hover {
+ background-color: @yellow;
+}
+
+/////////////////////////////////////////////Dashboard
+
+#dashboardBg {
+  background-color: black;
+}
+
+.panel {
+  border: 1px solid @yellow;
+}
+.panel-heading {
+  background-color: @green;
+  color: black;
+}
+
+.yellow-btn {
+  background-color: @yellow;
+}
+
+.yellow-btn:hover {
+  background-color: yellow;
+}
+
+////////////////////////////////////////////Browse
+
+#browsePage {
+  background-color: black;
+}
+////////////////////////////////////////////Map
 #map{
   vertical-align: center;
   margin-left: auto;
   margin-right: auto;
   height: 400px;
   width: 600px;
+  margin-bottom: 20px;
+  border: 3px solid @yellow;
 }
+/////////////////////////////////////////background
+
+.bg {
+  background-image: url('/img/real_cf.png');
+}
+
+////////////////////////////////////////gifts page
+
+body#giftsPage {
+  background-color: black;
+}
+
+#itemPhoto {
+  height: 200px;
+  background-size: cover;
+}
+
+#giftTable th {
+  text-align: center;
+}
+
+#giftTable td {
+  text-align: center;
+}
+//////////////////////////////////////edit profile
+
+#editProfile label {
+  color: @green;
+}
+
 
 .photo{
   max-height: 300px;
@@ -19,22 +176,27 @@ body{
 
 .gift{
   background-color: lightgray;
-  border: 2px solid black;
+  border: 2px solid @yellow;
   display: inline-block;
   max-width: 300px;
   max-height: 300px;
   margin: 5px;
   border-radius: 5px;
+  padding: 5px;
+  text-align: center;
+color: @green;
   img{
-    max-width: 80px;
+    border: 1px solid pink;
+    max-width: 200px;
   }
 }
 .wink{
-  background-color: lightgray;
+  background-color: @yellow;
   margin: 5px;
-  border: 2px solid black;
+  border: 2px solid @green;
   display: inline-block;
   max-width: 300px;
-  max-height: 300px;
+  max-height: 400px;
   border-radius: 5px;
+  padding: 5px;
 }
