@@ -1,7 +1,7 @@
 ## name of project
 ### Code Badges
-build status icon
-coverage status icon
+[![Build Status](https://travis-ci.org/SuperArtie/fiction-fix.svg?branch=ux)](https://travis-ci.org/SuperArtie/fiction-fix)
+[![Coverage Status](https://coveralls.io/repos/SuperArtie/fiction-fix/badge.png)](https://coveralls.io/r/SuperArtie/fiction-fix)
 
 ### Screenshots
 ![Image1](https://raw.githubusercontent.com/nss-cohort-2014-06-07/express-template/master/docs/screenshots/one.jpg)
@@ -40,7 +40,10 @@ $ npm test
 ```
 
 ### Contributors
-- [Chyld Medford](https://github.com/chyld)
+- [Juan Rodriguez](https://github.com/chyld)- 
+- [Nathan Vasquez](https://github.com/chyld)- 
+- [Daniel Roden](https://github.com/chyld)- 
+- [Mikey Badir](https://github.com/chyld)
 
 ### License
 [MIT](LICENSE)
